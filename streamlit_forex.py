@@ -13,12 +13,12 @@ warnings.simplefilter('ignore')
 st.write("Hello! Welcome to Forex Prediction page!")
 
 
-if st.button("Go Live2"):
+if st.button("Go Live2", key='live2'):
     st.rerun
 
 st.sidebar.title("Forex Pair")
-st.sidebar.radio("Pick the interested forex pair.", ["EURUSD", "GBPUSD", "USDJPY"])
-if st.sidebar.button("Go Live"):
+st.sidebar.radio("Pick the interested forex pair.", ["EURUSD", "GBPUSD", "USDJPY"], key='forex')
+if st.sidebar.button("Go Live",key='live'):
     st.rerun
 
 rand = np.random.normal(1, 2, size=20)
