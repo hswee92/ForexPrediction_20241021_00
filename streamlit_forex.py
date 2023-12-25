@@ -41,6 +41,9 @@ st.write("Disclaimer: Trading involves risk. \n"
          "you are familiar with and understand the risk associated with them. \n"
          "Trade at your own risk.")
 
+st.write("st.session_state")
+st.session_state
+
 time.sleep(5)
 st.rerun()
 
