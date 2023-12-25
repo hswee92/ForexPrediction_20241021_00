@@ -13,7 +13,7 @@ warnings.simplefilter('ignore')
 st.write("Hello! Welcome to Forex Prediction page!")
 
 
-if st.sidebar.button("Go Live"):
+if st.button("Go Live2"):
     st.rerun
 
 st.sidebar.title("Forex Pair")
