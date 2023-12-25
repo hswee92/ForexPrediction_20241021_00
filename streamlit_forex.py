@@ -3,6 +3,7 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import numpy as np
 from schedule import every, repeat, run_pending
+from apscheduler.schedulers.background import BackgroundScheduler
 from datetime import datetime
 import time
 
@@ -18,16 +19,27 @@ ax.hist(rand, bins=15)
 st.pyplot(fig)
 
 
-with st.empty():
-    @repeat(every(5).seconds)
+# with st.empty():
+#     @repeat(every(5).seconds)
+#     now = datetime.now()
+#     current_time = now.strftime("%H:%M:%S")
+#     time = "Current Time = " + current_time
+#     st.write(time)
+#
+#     while True:
+#       run_pending()
+#       time.sleep(1)
+#
+def update_time():
     now = datetime.now()
     current_time = now.strftime("%H:%M:%S")
     time = "Current Time = " + current_time
     st.write(time)
 
-    while True:
-      run_pending()
-      time.sleep(1)
+scheduler = BackgroundScheduler()
+scheduler.add_job(update_time, 'interval', seconds=5)
+scheduler.start()
+st.title('Displaying Time')
 
 
 
