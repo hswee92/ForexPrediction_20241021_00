@@ -2,8 +2,8 @@
 import streamlit as st
 import matplotlib.pyplot as plt
 import numpy as np
-from schedule import every, repeat, run_pending
-from apscheduler.schedulers.background import BackgroundScheduler
+# from schedule import every, repeat, run_pending
+# from apscheduler.schedulers.background import BackgroundScheduler
 from datetime import datetime
 import time
 
@@ -30,18 +30,13 @@ st.pyplot(fig)
 #       run_pending()
 #       time.sleep(1)
 #
-def update_time():
-    now = datetime.now()
-    current_time = now.strftime("%H:%M:%S")
-    time = "Current Time = " + current_time
-    st.write(time)
-
-scheduler = BackgroundScheduler()
-scheduler.add_job(update_time, 'interval', seconds=5)
-scheduler.start()
+initial_state = 0
 st.title('Displaying Time')
 
-
+now = datetime.now()
+current_time = now.strftime("%H:%M:%S")
+cur_time = "Current Time = " + current_time
+st.write(cur_time)
 
 
 st.write("Disclaimer: Trading involves risk. \n"
@@ -49,7 +44,8 @@ st.write("Disclaimer: Trading involves risk. \n"
          "you are familiar with and understand the risk associated with them. \n"
          "Trade at your own risk.")
 
-
+time.sleep(5)
+st.rerun()
 
 
 
