@@ -6,9 +6,15 @@ import numpy as np
 # from apscheduler.schedulers.background import BackgroundScheduler
 from datetime import datetime
 import time
+import warnings
 
+warnings.simplefilter('ignore')
 
 st.write("Hello! Welcome to Forex Prediction page!")
+
+
+if st.sidebar.button("Go Live"):
+    st.rerun
 
 st.sidebar.title("Forex Pair")
 st.sidebar.radio("Pick the interested forex pair.", ["EURUSD", "GBPUSD", "USDJPY"])
