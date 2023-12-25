@@ -12,6 +12,8 @@ st.write("Hello! Welcome to Forex Prediction page!")
 
 st.sidebar.title("Forex Pair")
 st.sidebar.radio("Pick the interested forex pair.", ["EURUSD", "GBPUSD", "USDJPY"])
+if st.sidebar.button("Go Live"):
+    st.rerun
 
 rand = np.random.normal(1, 2, size=20)
 fig, ax = plt.subplots()
@@ -19,17 +21,6 @@ ax.hist(rand, bins=15)
 st.pyplot(fig)
 
 
-# with st.empty():
-#     @repeat(every(5).seconds)
-#     now = datetime.now()
-#     current_time = now.strftime("%H:%M:%S")
-#     time = "Current Time = " + current_time
-#     st.write(time)
-#
-#     while True:
-#       run_pending()
-#       time.sleep(1)
-#
 initial_state = 0
 st.title('Displaying Time')
 
