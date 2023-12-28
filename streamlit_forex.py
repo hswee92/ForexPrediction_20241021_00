@@ -97,7 +97,7 @@ else:
     plot_graph(df)
 
 
-container = st.container(border=True, key='container1')
+container = st.container(border=True)
 # create timestamp 
 MT4_timezone = pytz.timezone('EET') 
 MT4_now = datetime.now(MT4_timezone)
