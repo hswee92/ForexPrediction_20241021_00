@@ -26,7 +26,7 @@ if radio_forex == "EURUSD":
          path = "./" + hist_file
          st.write(path)
          df = pd.read_csv(path, delimiter=',', index_col=False)
-         st.write(df)
+         st.dataframe(df)
 
 elif radio_forex == "GBPUSD**":
          st.write("this is GBPUSD")
