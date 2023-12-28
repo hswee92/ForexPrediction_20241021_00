@@ -16,19 +16,20 @@ import warnings
 # define functions
 
 @st.cache_data
-def plot_graph(df,df_pred=pd.DataFrame()):
+def plot_graph(df,df_pred=pd.DataFrame(),date=str_date):
     graph = st.container(border=True)
+    graph.write("This is the today's graph (" + date + ") for " + forex_pair[0:6] + ".")
     
     fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(10,5))
     ax.plot(df['Date_timestamp'],df['Close'],label="Historical",color=plotcolor) # marker='x' marker='.'
 
-    if radio_forex == "EURUSD":
+    if forex_pair[0:6] == "EURUSD":
         df_pred = pd.concat([df.iloc[-2:], df_pred]).reset_index(drop=True)
         ax.plot(df_pred['Date_timestamp'],df_pred['Close'],label="Prediction",color='red',linewidth=2.5)
 
     ax.set(xlabel='EET Time')  
     ax.set(ylabel='Exchange Rate') 
-    plottitle = radio_forex[0:6] + ' Latest Exchange Rate'
+    plottitle = forex_pair[0:6] + ' Latest Exchange Rate'
     ax.set_title(plottitle)
     ax.set_xlim(df['Date_timestamp'].iloc[0], df_datetime['Date'].iloc[-1]) 
     ax.xaxis.set_major_formatter(mdates.DateFormatter('%H:%M:%S'))
@@ -39,6 +40,7 @@ def plot_graph(df,df_pred=pd.DataFrame()):
 @st.cache_data
 def prediction_table(df):
     table = st.container(border=True)
+    table.write = ("This is the trend prediction for the next 30 minutes.")
 
     df2 = df
     df2['Date'] = df2['Date'].str.slice(11,19)
@@ -60,19 +62,15 @@ def datetime_list(str_date):
 
 
 placeholder = st.empty()
-placeholder.title('Forex Pair Graphs')
-
-st.sidebar.title("Forex Pair")
-
-
+placeholder.title('Forex Pair')
 
 st.write("Hello! Welcome to Forex Prediction page!")
 
 st.write("According to Triennial Central Bank Survey conducted by Bank for International Settlements (2022), "
-         "US dollar is still the world’s dominant currency. 88.5% of all trades in April 2022 involve **US dollar**, "
+         "US dollar is still the world's dominant currency. 88.5% of all trades in April 2022 involve **US dollar**, "
          "followed by **Euro** (30.5%), **Japanese Yen** (16.7%) and **Great Britain Pound** (12.9%).")
 
-st.write("** Prediction not available.")
+st.write("**Prediction not available.")
 
 
 EURUSD, GBPUSD, USDJPY = st.tabs(["EURUSD", "GBPUSD**", "USDJPY**"])
@@ -98,7 +96,6 @@ with EURUSD:
 
     plot_graph(df,df_pred)
     prediction_table(df_pred)
-
 
 
 with GBPUSD:
@@ -140,10 +137,6 @@ with USDJPY:
 
 
 
-
-
-
-
 # container for information below
 container = st.container(border=True)
 
@@ -162,8 +155,8 @@ container.write("**:red[Disclaimer: Trading involves risk. \n"
                 "you are familiar with and understand the risk associated with them. \n"
                 "Trade at your own risk.]**")
 
-st.write("st.session_state")
-st.session_state
+# st.write("st.session_state")
+# st.session_state
 
 time.sleep(5)
 st.rerun()
