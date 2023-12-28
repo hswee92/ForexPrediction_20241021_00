@@ -3,4 +3,4 @@ numpy
 matplotlib
 datetime
 PyGithub
-requests
+pytz
