@@ -3,7 +3,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-# from datetime import datetime
+from datetime import datetime
 from github import Github
 import pytz
 
@@ -92,17 +92,17 @@ else:
 
 # create timestamp 
 local_timezone = pytz.timezone('Asia/Kuala_Lumpur') 
-local_now = datetime.datetime.now(local_timezone)
+local_now = datetime.now(local_timezone)
 st.write(local_now)
 
 MT4_timezone = pytz.timezone('EET') 
-MT4_now = datetime.datetime.now(MT4_timezone)
+MT4_now = datetime.now(MT4_timezone)
 st.write(MT4_now)
 
-# now = datetime.now()
-# current_time = now.strftime("%H:%M:%S")
-# cur_time = "Current Time = " + current_time
-# st.write(cur_time)
+now = datetime.now()
+current_time = now.strftime("%H:%M:%S")
+cur_time = "Current Time = " + current_time
+st.write(cur_time)
 
 
 st.write("**:red[Disclaimer: Trading involves risk. \n"
