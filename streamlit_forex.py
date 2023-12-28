@@ -42,25 +42,25 @@ hist_file = radio_forex[0:6] + "_historical.txt"
 path = "./" + hist_file
 df = pd.read_csv(hist_file, delimiter=',', index_col=False)
 
+# Prepare for plot
+str_date = df['Date'].iloc[0][0:10]
+df_datetime['Date'] = pd.date_range(str_date, periods=1440, freq="T")
+
 
 # Plot
-fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(24,10))
+fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(50,30))
 
 ax.plot(df['Date'],df['Close'],label="silhouette score",color=plotcolor) # marker='x' marker='.'
 ax.set(xlabel='Time')  
 ax.set(ylabel='Exchange Rate') 
 plottitle = radio_forex[0:6] + 'Latest Exchange Rate'
 ax.set_title(plottitle)
+
+axis.set_xlim(df['Date'].iloc[0], df_datetime['Date'].iloc[-1]) 
 st.pyplot(fig)
 
 st.table(df)
 
-
-
-rand = np.random.normal(1, 2, size=20)
-fig, ax = plt.subplots()
-ax.hist(rand, bins=15)
-st.pyplot(fig)
 
 
 
