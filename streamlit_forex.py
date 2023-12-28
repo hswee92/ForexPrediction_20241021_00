@@ -18,7 +18,6 @@ import warnings
 @st.cache_data
 def plot_graph(df,df_pred=pd.DataFrame(),date="xx"):
     graph = st.container(border=True)
-    graph.write("This is the today's graph (" + date + ") for " + forex_pair[0:6] + ".")
     
     fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(10,5))
     ax.plot(df['Date_timestamp'],df['Close'],label="Historical",color=plotcolor) # marker='x' marker='.'
@@ -75,9 +74,7 @@ st.write("**Prediction not available.")
 
 EURUSD, GBPUSD, USDJPY = st.tabs(["EURUSD", "GBPUSD**", "USDJPY**"])
 with EURUSD:
-    forex_pair = "EURUSD"
-    st.write("EURUSD pair is the **MOST** traded currency pair. \n"
-             "In April 2022, EURUSD makes up 22.7% of total trades.")
+    forex_pair = "EURUSD"    
     
     plotcolor = 'royalblue'
     pred_file = forex_pair[0:6] + "_prediction.txt"
@@ -94,14 +91,17 @@ with EURUSD:
 
     df_datetime = datetime_list(str_date)
 
+    st.write("EURUSD pair is the **MOST** traded currency pair. \n"
+             "In April 2022, EURUSD makes up 22.7% of total trades.")
+    
+    st.write("This is the today's graph (" + date + ") for " + forex_pair[0:6] + ".")
+
     plot_graph(df,df_pred,str_date)
     prediction_table(df_pred)
 
 
 with GBPUSD:
     forex_pair = "GBPUSD"
-    st.write("GBPUSD pair is the **THIRD** most traded currency pair. \n"
-             "In April 2022, GBPUSD makes up 9.6% of total trades.")
 
     plotcolor = 'salmon'
     hist_file = forex_pair[0:6] + "_historical.txt"
@@ -114,13 +114,14 @@ with GBPUSD:
 
     df_datetime = datetime_list(str_date)
 
+    st.write("GBPUSD pair is the **THIRD** most traded currency pair. \n"
+             "In April 2022, GBPUSD makes up 9.6% of total trades.")
+
     plot_graph(df)
 
 
 with USDJPY:
     forex_pair = "USDJPY"
-    st.write("USDJPY pair is the **SECOND** most traded currency pair. \n"
-             "In April 2022, USDJPY makes up 13.2% of total trades.")
 
     plotcolor = 'forestgreen'
     hist_file = forex_pair[0:6] + "_historical.txt"
@@ -133,6 +134,8 @@ with USDJPY:
 
     df_datetime = datetime_list(str_date)
 
+    st.write("USDJPY pair is the **SECOND** most traded currency pair. \n"
+             "In April 2022, USDJPY makes up 13.2% of total trades.")
     plot_graph(df)
 
 
