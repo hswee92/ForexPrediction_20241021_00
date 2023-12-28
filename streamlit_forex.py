@@ -25,7 +25,7 @@ if radio_forex == "EURUSD":
          st.write("this is EURUSD")
          hist_file = radio_forex[0:6] + "_historical.txt"
          path = "https://raw.githubusercontent.com/hswee92/ForexPrediction/blob/main/" + hist_file
-         path = "https://github.com/hswee92/ForexPrediction/blob/main/" + hist_file
+         # path = "https://github.com/hswee92/ForexPrediction/blob/main/" + hist_file
          
          response = requests.get(path)
          
