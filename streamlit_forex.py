@@ -97,7 +97,7 @@ else:
     plot_graph(df)
 
 
-container = st.container(border=True)
+container = st.container(border=True, key='container1')
 # create timestamp 
 MT4_timezone = pytz.timezone('EET') 
 MT4_now = datetime.now(MT4_timezone)
@@ -113,13 +113,13 @@ container.write("**Malaysia time:** "+  str_local)
 container.write("**:red[Disclaimer: Trading involves risk. \n"
                 "As a general rule, you should only trade in financial products that "
                 "you are familiar with and understand the risk associated with them. \n"
-                "Trade at your own risk.]**")
+                "Trade at your own risk.]**", key='disclaimer')
 
-st.write("st.session_state")
-st.session_state
+# st.write("st.session_state")
+# st.session_state
 
 time.sleep(5)
-st.experimental_rerun()
+st.rerun()
 
 
 
