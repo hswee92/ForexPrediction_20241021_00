@@ -16,7 +16,7 @@ import warnings
 # define functions
 
 @st.cache_data
-def plot_graph(df,df_pred=pd.DataFrame(),date="xx"):
+def plot_graph(df,df_pred=pd.DataFrame()):
     graph = st.container(border=True)
     
     fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(10,5))
@@ -94,7 +94,7 @@ with EURUSD:
     st.write("EURUSD pair is the **MOST** traded currency pair. \n"
              "In April 2022, EURUSD makes up 22.7% of total trades.")
     st.write("This is the today's graph (" + str_date + ") for " + forex_pair[0:6] + ".")
-    plot_graph(df,df_pred,str_date)
+    plot_graph(df,df_pred)
     prediction_table(df_pred)
 
 
