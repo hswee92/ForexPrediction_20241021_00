@@ -93,20 +93,15 @@ else:
          plot_graph(df)
 
 # create timestamp 
-local_timezone = pytz.timezone('Asia/Kuala_Lumpur') 
-local_now = datetime.now(local_timezone)
-str_local = local_now.strftime("%d-%m-%Y %H:%M:%S")
-st.write("Malaysia time: "+  str_local)
-
 MT4_timezone = pytz.timezone('EET') 
 MT4_now = datetime.now(MT4_timezone)
 str_MT4 = MT4_now.strftime("%d-%m-%Y %H:%M:%S")
-st.write("Server time: " + str_MT4)
+st.write("**Server time: **" + str_MT4)
 
-now = datetime.now()
-current_time = now.strftime("%d-%m-%Y %H:%M:%S")
-cur_time = "Current Time = " + current_time
-st.write(cur_time)
+local_timezone = pytz.timezone('Asia/Kuala_Lumpur') 
+local_now = datetime.now(local_timezone)
+str_local = local_now.strftime("%d-%m-%Y %H:%M:%S")
+st.write("**Malaysia time: **"+  str_local)
 
 
 st.write("**:red[Disclaimer: Trading involves risk. \n"
