@@ -12,7 +12,35 @@ import warnings
 
 # warnings.simplefilter('ignore')
 
-initial_state = 0
+# define functions
+
+@st.cache_data
+def plot_graph(df):
+         fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(25,15))
+         ax.plot(df['Date_timestamp'],df['Close'],label="silhouette score",color=plotcolor) # marker='x' marker='.'
+
+         
+         
+         ax.set(xlabel='Time')  
+         ax.set(ylabel='Exchange Rate') 
+         plottitle = radio_forex[0:6] + 'Latest Exchange Rate'
+         ax.set_title(plottitle)
+         ax.set_xlim(df['Date_timestamp'].iloc[0], df_datetime['Date'].iloc[-1]) 
+         st.pyplot(fig)
+
+
+@st.cache_data
+def prediction_table(df):
+         st.write(df.T)
+         st.table(df.T)
+         st.dataframe(df.T)
+         
+@st.cache_data
+def datetime_list(str_date)
+         df = pd.DataFrame()
+         df['Date'] = pd.date_range(str_date, periods=1440, freq="T")
+         return df
+
 st.title('Forex Pair Graphs')
 
 st.sidebar.title("Forex Pair")
@@ -41,32 +69,11 @@ path = "./" + hist_file
 df = pd.read_csv(hist_file, delimiter=',', index_col=False)
 df['Date_timestamp'] = pd.to_datetime(df['Date'])
 
-
 # Prepare for plot
 str_datetime = df['Date'].iloc[0]
-str_date = str_datetime[0:10].replace('-', '.')
-st.write(str_date)
+str_date = str_datetime[0:10]
 
-df_datetime = pd.DataFrame()
-df_datetime['Date'] = pd.date_range(str_date, periods=1440, freq="T")
-
-
-# Plot
-@st.cache_data
-def plot_graph(df):
-         fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(25,15))
-         ax.plot(df['Date_timestamp'],df['Close'],label="silhouette score",color=plotcolor) # marker='x' marker='.'
-         ax.set(xlabel='Time')  
-         ax.set(ylabel='Exchange Rate') 
-         plottitle = radio_forex[0:6] + 'Latest Exchange Rate'
-         ax.set_title(plottitle)
-
-         st.write(df['Date'].iloc[0])
-         st.write(df_datetime['Date'].iloc[-1])
-         
-         ax.set_xlim(df['Date_timestamp'].iloc[0], df_datetime['Date'].iloc[-1]) 
-         st.pyplot(fig)
-st.write(df.iloc[10])
+df_datetime = datetime_list(str_date)
 
 plot_graph(df)
 
