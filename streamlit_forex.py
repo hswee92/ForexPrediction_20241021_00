@@ -94,7 +94,7 @@ with EURUSD:
 
     df_datetime = datetime_list(str_date)
 
-    plot_graph(df,df_pred)
+    plot_graph(df,df_pred,str_date)
     prediction_table(df_pred)
 
 
