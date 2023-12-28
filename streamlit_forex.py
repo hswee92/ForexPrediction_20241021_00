@@ -42,9 +42,9 @@ def prediction_table(df):
     df2_set1 = df2[['Date','Close']][0:10]
     df2_set2 = df2[['Date','Close']][10:20]
     df2_set3 = df2[['Date','Close']][20:30]
-    st.write(df2_set1.T)
-    st.write(df2_set2.T)
-    st.write(df2_set3.T)
+    st.write(df2_set1.T, key='table1')
+    st.write(df2_set2.T, key='table2')
+    st.write(df2_set3.T, key='table3')
 
 
          
@@ -95,10 +95,14 @@ if radio_forex == "EURUSD":
     prediction_table(df_pred)
 else:
     plot_graph(df)
+    del st.session_state['table1']
+    del st.session_state['table2']
+    del st.session_state['table3']
+    
 
 
+# container for information below
 container = st.container(border=True)
-# create timestamp 
 MT4_timezone = pytz.timezone('EET') 
 MT4_now = datetime.now(MT4_timezone)
 str_MT4 = MT4_now.strftime("%d-%m-%Y %H:%M:%S")
@@ -108,7 +112,6 @@ local_timezone = pytz.timezone('Asia/Kuala_Lumpur')
 local_now = datetime.now(local_timezone)
 str_local = local_now.strftime("%d-%m-%Y %H:%M:%S")
 container.write("**Malaysia time:** "+  str_local)
-
 
 container.write("**:red[Disclaimer: Trading involves risk. \n"
                 "As a general rule, you should only trade in financial products that "
