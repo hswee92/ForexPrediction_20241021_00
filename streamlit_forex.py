@@ -23,6 +23,12 @@ def plot_graph(df_hist,df_predict=pd.DataFrame()):
     #     if df['state'].iloc[i] != df['state'].iloc[i - 1]:
     #     change_indices.append(i)
     
+
+    # get day change
+    # get boolean of positive or negative
+    # get change indices
+
+
     def find_state_changes(dataframe):
     change_indices=""
     for i in range(1, len(data)):
