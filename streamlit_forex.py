@@ -85,6 +85,69 @@ elif radio_forex == "USDJPY**":
     # hist_file = radio_forex[0:6] + "_historical.txt"
     plotcolor = 'forestgreen'
 
+tab1, tab2, tab3 = st.tabs(["Cat", "Dog", "Owl"], key ='tab')
+
+with tab1:
+    st.write("this is EURUSD")
+    hist_file = radio_forex[0:6] + "_historical.txt"
+    plotcolor = 'royalblue'
+
+    pred_file = radio_forex[0:6] + "_prediction.txt"
+    df_pred = pd.read_csv(pred_file, delimiter=',', index_col=False)
+    df_pred['Date_timestamp'] = pd.to_datetime(df_pred['Date'])
+
+    hist_file = radio_forex[0:6] + "_historical.txt"
+    df = pd.read_csv(hist_file, delimiter=',', index_col=False)
+    df['Date_timestamp'] = pd.to_datetime(df['Date'])
+
+    # Prepare for plot
+    str_datetime = df['Date'].iloc[0]
+    str_date = str_datetime[0:10]
+
+    df_datetime = datetime_list(str_date)
+
+    plot_graph(df,df_pred)
+    prediction_table(df_pred)
+
+
+
+with tab2:
+    st.write("this is GBPUSD")
+    # hist_file = radio_forex[0:6] + "_historical.txt"
+    plotcolor = 'salmon'
+
+    hist_file = radio_forex[0:6] + "_historical.txt"
+    df = pd.read_csv(hist_file, delimiter=',', index_col=False)
+    df['Date_timestamp'] = pd.to_datetime(df['Date'])
+
+    # Prepare for plot
+    str_datetime = df['Date'].iloc[0]
+    str_date = str_datetime[0:10]
+
+    df_datetime = datetime_list(str_date)
+
+    plot_graph(df)
+
+
+with tab3:
+    st.write("this is USDJPY")
+    # hist_file = radio_forex[0:6] + "_historical.txt"
+    plotcolor = 'forestgreen'
+
+    hist_file = radio_forex[0:6] + "_historical.txt"
+    df = pd.read_csv(hist_file, delimiter=',', index_col=False)
+    df['Date_timestamp'] = pd.to_datetime(df['Date'])
+
+    # Prepare for plot
+    str_datetime = df['Date'].iloc[0]
+    str_date = str_datetime[0:10]
+
+    df_datetime = datetime_list(str_date)
+
+    plot_graph(df)
+
+
+
 
 
 hist_file = radio_forex[0:6] + "_historical.txt"
