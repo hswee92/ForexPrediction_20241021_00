@@ -96,7 +96,7 @@ else:
 local_timezone = pytz.timezone('Asia/Kuala_Lumpur') 
 local_now = datetime.now(local_timezone)
 str_local = local_now.strftime("%d-%m-%Y %H:%M:%S")
-st.write("Malaysia time: " str_local)
+st.write("Malaysia time: "+  str_local)
 
 MT4_timezone = pytz.timezone('EET') 
 MT4_now = datetime.now(MT4_timezone)
