@@ -38,7 +38,7 @@ elif radio_forex == "USDJPY**":
 
 hist_file = radio_forex[0:6] + "_historical.txt"
 path = "./" + hist_file
-df = pd.read_csv(path, delimiter=',', index_col=False)
+df = pd.read_csv(hist_file, delimiter=',', index_col=False)
 st.table(df)
 
 rand = np.random.normal(1, 2, size=20)
