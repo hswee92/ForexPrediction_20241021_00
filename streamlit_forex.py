@@ -66,7 +66,6 @@ if radio_forex == "EURUSD":
          df_pred = pd.read_csv(pred_file, delimiter=',', index_col=False)
          df_pred['Date_timestamp'] = pd.to_datetime(df_pred['Date'])
 
-
 elif radio_forex == "GBPUSD**":
          st.write("this is GBPUSD")
          # hist_file = radio_forex[0:6] + "_historical.txt"
@@ -96,12 +95,12 @@ else:
 MT4_timezone = pytz.timezone('EET') 
 MT4_now = datetime.now(MT4_timezone)
 str_MT4 = MT4_now.strftime("%d-%m-%Y %H:%M:%S")
-st.write("**Server time: **" + str_MT4)
+st.write("**[Server time: ]**" + str_MT4)
 
 local_timezone = pytz.timezone('Asia/Kuala_Lumpur') 
 local_now = datetime.now(local_timezone)
 str_local = local_now.strftime("%d-%m-%Y %H:%M:%S")
-st.write("**Malaysia time: **"+  str_local)
+st.write("**[Malaysia time: ]**"+  str_local)
 
 
 st.write("**:red[Disclaimer: Trading involves risk. \n"
