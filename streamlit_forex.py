@@ -16,11 +16,11 @@ import warnings
 
 @st.cache_data
 def plot_graph(df):
-         fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(25,15))
+         fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(15,8))
          ax.plot(df['Date_timestamp'],df['Close'],label="Historical",color=plotcolor) # marker='x' marker='.'
 
          if radio_forex == "EURUSD":
-                  ax.plot(df_pred['Date_timestamp'],df_pred['Close'],label="Prediction",color=red,linewidth=2.5)
+                  ax.plot(df_pred['Date_timestamp'],df_pred['Prediction'],label="Prediction",color=red,linewidth=2.5)
          
          ax.set(xlabel='Time')  
          ax.set(ylabel='Exchange Rate') 
