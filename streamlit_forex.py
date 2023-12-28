@@ -89,16 +89,16 @@ st.write("Hello! Welcome to Forex Prediction page!")
 
 tab1, tab2, tab3 = st.tabs(["EURUSD", "GBPUSD**", "USDJPY**"])
 with tab1:
-    st.write(tab1)
+    forex_pair = "EURUSD"
     st.write("this is EURUSD")
-    hist_file = radio_forex[0:6] + "_historical.txt"
+    hist_file = forex_pair[0:6] + "_historical.txt"
     plotcolor = 'royalblue'
 
-    pred_file = radio_forex[0:6] + "_prediction.txt"
+    pred_file = forex_pair[0:6] + "_prediction.txt"
     df_pred = pd.read_csv(pred_file, delimiter=',', index_col=False)
     df_pred['Date_timestamp'] = pd.to_datetime(df_pred['Date'])
 
-    hist_file = radio_forex[0:6] + "_historical.txt"
+    hist_file = forex_pair[0:6] + "_historical.txt"
     df = pd.read_csv(hist_file, delimiter=',', index_col=False)
     df['Date_timestamp'] = pd.to_datetime(df['Date'])
 
@@ -114,11 +114,12 @@ with tab1:
 
 
 with tab2:
+    forex_pair = "GBPUSD"
     st.write("this is GBPUSD")
-    # hist_file = radio_forex[0:6] + "_historical.txt"
+    # hist_file = forex_pair[0:6] + "_historical.txt"
     plotcolor = 'salmon'
 
-    hist_file = radio_forex[0:6] + "_historical.txt"
+    hist_file = forex_pair[0:6] + "_historical.txt"
     df = pd.read_csv(hist_file, delimiter=',', index_col=False)
     df['Date_timestamp'] = pd.to_datetime(df['Date'])
 
@@ -132,11 +133,12 @@ with tab2:
 
 
 with tab3:
+    forex_pair = "USDJPY"
     st.write("this is USDJPY")
-    # hist_file = radio_forex[0:6] + "_historical.txt"
+    # hist_file = forex_pair[0:6] + "_historical.txt"
     plotcolor = 'forestgreen'
 
-    hist_file = radio_forex[0:6] + "_historical.txt"
+    hist_file = forex_pair[0:6] + "_historical.txt"
     df = pd.read_csv(hist_file, delimiter=',', index_col=False)
     df['Date_timestamp'] = pd.to_datetime(df['Date'])
 
