@@ -85,7 +85,7 @@ elif radio_forex == "USDJPY**":
     # hist_file = radio_forex[0:6] + "_historical.txt"
     plotcolor = 'forestgreen'
 
-tab1, tab2, tab3 = st.tabs(["Cat", "Dog", "Owl"], key ='tab')
+tab1, tab2, tab3 = st.tabs(["Cat", "Dog", "Owl"])
 
 with tab1:
     st.write("this is EURUSD")
