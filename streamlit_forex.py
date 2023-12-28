@@ -27,8 +27,8 @@ if radio_forex == "EURUSD":
          
          path = "https://github.com/hswee92/ForexPrediction/blob/main/" + hist_file
          response = requests.get(path)
-
-         df2 = pd.read_csv(StringIO(response.text))
+         
+         df2 = pd.read_csv(pd.compat.StringIO(data))
          
          st.write(path)
          df = pd.read_csv(path, delimiter=',', index_col=False)
