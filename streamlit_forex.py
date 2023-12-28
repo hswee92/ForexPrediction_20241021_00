@@ -55,10 +55,10 @@ cur_time = "Current Time = " + current_time
 st.write(cur_time)
 
 
-st.write(":red[Disclaimer]: Trading involves risk. \n"
+st.write("**:red[Disclaimer: Trading involves risk. \n"
          "As a general rule, you should only trade in financial products that "
          "you are familiar with and understand the risk associated with them. \n"
-         "Trade at your own risk.")
+         "Trade at your own risk.]**")
 
 st.write("st.session_state")
 st.session_state
