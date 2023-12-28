@@ -23,7 +23,8 @@ def plot_graph(df,df_pred=pd.DataFrame()):
     if radio_forex == "EURUSD":
         # st.write(df.iloc[-1].T)
         # df_pred = pd.concat([df.iloc[-1].T, df_pred]).reset_index(drop=True)
-        pd.set_option('display.transpose', False)
+        st.write(df)
+        st.write(df.iloc[-1])
         df_pred = pd.merge(df_pred, df.iloc[-1], how='left', on=['Date_timestamp', 'Date_timestamp'])
         st.write(df_pred)
         ax.plot(df_pred['Date_timestamp'],df_pred['Close'],label="Prediction",color='red',linewidth=2.5)
