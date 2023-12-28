@@ -16,9 +16,9 @@ st.write("Hello! Welcome to Forex Prediction page!")
 
 if radio_forex == "EURUSD":
          st.write("this is EURUSD")
-elif radio_forex == "GBPUSD":
+if radio_forex == "GBPUSD":
          st.write("this is GBPUSD")
-elif radio_forex == "USDJPY":
+if radio_forex == "USDJPY":
          st.write("this is USDJPY")
 
          
