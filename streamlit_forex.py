@@ -42,7 +42,7 @@ df = pd.read_csv(hist_file, delimiter=',', index_col=False)
 
 # Prepare for plot
 str_datetime = df['Date'].iloc[0]
-st.write(str_datetime[0])
+st.write(str_datetime[0:10])
 str_date = str_datetime
 st.write(str_date)
 
@@ -56,7 +56,7 @@ st.write(str_date)
 
 # Plot
 @st.cache_data
-def plot_graph(df)
+def plot_graph(df):
          fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(25,15))
          ax.plot(df['Date'],df['Close'],label="silhouette score",color=plotcolor) # marker='x' marker='.'
          ax.set(xlabel='Time')  
@@ -66,6 +66,8 @@ def plot_graph(df)
          
          # ax.set_xlim(df['Date'].iloc[0], df_datetime['Date'].iloc[-1]) 
          st.pyplot(fig)
+
+plot_graph(df)
 
 st.table(df)
 
