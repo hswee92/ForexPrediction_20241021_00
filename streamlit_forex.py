@@ -38,7 +38,7 @@ def plot_graph(df,df_pred=pd.DataFrame()):
 def prediction_table(df):
     df2 = df
     df2['Date'] = df2['Date'].str.slice(11,19)
-    df2['Close'] = df2['Close'].round(4)
+    df2['Close'] = df2['Close'].round(5)
     df2_set1 = df2[['Date','Close']][0:10]
     df2_set2 = df2[['Date','Close']][10:20]
     df2_set3 = df2[['Date','Close']][20:30]
