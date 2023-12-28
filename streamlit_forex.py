@@ -42,7 +42,7 @@ def prediction_table(df_prediction):
     table.write("This is the trend prediction for the next 30 minutes.")
 
     df2 = df_prediction
-    df2['Date'] = df2['Date'].str.slice(11,19)
+    df2['Date'] = df2['Date'].str.slice(11,16)
     df2['Close'] = df2['Close'].round(5)
     df2_set1 = df2[['Date','Close']][0:10]
     df2_set2 = df2[['Date','Close']][10:20]
