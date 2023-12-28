@@ -69,19 +69,19 @@ st.sidebar.title("Forex Pair")
 st.write("Hello! Welcome to Forex Prediction page!")
 
 st.write("According to Triennial Central Bank Survey conducted by Bank for International Settlements (2022), "
-         "US dollar is still the world’s dominant currency. 88.5% of all trades in April 2022 involve US dollar, "
-         "followed by Euro (30.5%), Japanese Yen (16.7%) and Great Britain Pound (12.9%).")
+         "US dollar is still the world’s dominant currency. 88.5% of all trades in April 2022 involve **US dollar**, "
+         "followed by **Euro** (30.5%), **Japanese Yen** (16.7%) and **Great Britain Pound** (12.9%).")
 
 st.write("** Prediction not available.")
 
 
 EURUSD, GBPUSD, USDJPY = st.tabs(["EURUSD", "GBPUSD**", "USDJPY**"])
-with tab1:
+with EURUSD:
     forex_pair = "EURUSD"
-    st.write("this is EURUSD")
-    hist_file = forex_pair[0:6] + "_historical.txt"
+    st.write("EURUSD pair is the **MOST** traded currency pair. \n"
+             "In April 2022, EURUSD makes up 22.7% of total trades.")
+    
     plotcolor = 'royalblue'
-
     pred_file = forex_pair[0:6] + "_prediction.txt"
     df_pred = pd.read_csv(pred_file, delimiter=',', index_col=False)
     df_pred['Date_timestamp'] = pd.to_datetime(df_pred['Date'])
@@ -103,10 +103,10 @@ with tab1:
 
 with GBPUSD:
     forex_pair = "GBPUSD"
-    st.write("this is GBPUSD")
-    # hist_file = forex_pair[0:6] + "_historical.txt"
-    plotcolor = 'salmon'
+    st.write("GBPUSD pair is the **THIRD** most traded currency pair. \n"
+             "In April 2022, GBPUSD makes up 9.6% of total trades.")
 
+    plotcolor = 'salmon'
     hist_file = forex_pair[0:6] + "_historical.txt"
     df = pd.read_csv(hist_file, delimiter=',', index_col=False)
     df['Date_timestamp'] = pd.to_datetime(df['Date'])
@@ -122,10 +122,10 @@ with GBPUSD:
 
 with USDJPY:
     forex_pair = "USDJPY"
-    st.write("this is USDJPY")
-    # hist_file = forex_pair[0:6] + "_historical.txt"
-    plotcolor = 'forestgreen'
+    st.write("USDJPY pair is the **SECOND** most traded currency pair. \n"
+             "In April 2022, USDJPY makes up 13.2% of total trades.")
 
+    plotcolor = 'forestgreen'
     hist_file = forex_pair[0:6] + "_historical.txt"
     df = pd.read_csv(hist_file, delimiter=',', index_col=False)
     df['Date_timestamp'] = pd.to_datetime(df['Date'])
