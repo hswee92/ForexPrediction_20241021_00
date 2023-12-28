@@ -66,28 +66,30 @@ st.sidebar.write("** Prediction not available.")
 
 st.write("Hello! Welcome to Forex Prediction page!")
 
-if radio_forex == "EURUSD":
-    st.write("this is EURUSD")
-    hist_file = radio_forex[0:6] + "_historical.txt"
-    plotcolor = 'royalblue'
+# if radio_forex == "EURUSD":
+#     st.write("this is EURUSD")
+#     hist_file = radio_forex[0:6] + "_historical.txt"
+#     plotcolor = 'royalblue'
 
-    pred_file = radio_forex[0:6] + "_prediction.txt"
-    df_pred = pd.read_csv(pred_file, delimiter=',', index_col=False)
-    df_pred['Date_timestamp'] = pd.to_datetime(df_pred['Date'])
+#     pred_file = radio_forex[0:6] + "_prediction.txt"
+#     df_pred = pd.read_csv(pred_file, delimiter=',', index_col=False)
+#     df_pred['Date_timestamp'] = pd.to_datetime(df_pred['Date'])
 
-elif radio_forex == "GBPUSD**":
-    st.write("this is GBPUSD")
-    # hist_file = radio_forex[0:6] + "_historical.txt"
-    plotcolor = 'salmon'
+# elif radio_forex == "GBPUSD**":
+#     st.write("this is GBPUSD")
+#     # hist_file = radio_forex[0:6] + "_historical.txt"
+#     plotcolor = 'salmon'
          
-elif radio_forex == "USDJPY**":
-    st.write("this is USDJPY")
-    # hist_file = radio_forex[0:6] + "_historical.txt"
-    plotcolor = 'forestgreen'
+# elif radio_forex == "USDJPY**":
+#     st.write("this is USDJPY")
+#     # hist_file = radio_forex[0:6] + "_historical.txt"
+#     plotcolor = 'forestgreen'
 
-tab1, tab2, tab3 = st.tabs(["Cat", "Dog", "Owl"])
 
+
+tab1, tab2, tab3 = st.tabs(["EURUSD", "GBPUSD**", "USDJPY**"])
 with tab1:
+    st.write(tab1)
     st.write("this is EURUSD")
     hist_file = radio_forex[0:6] + "_historical.txt"
     plotcolor = 'royalblue'
@@ -150,20 +152,20 @@ with tab3:
 
 
 
-hist_file = radio_forex[0:6] + "_historical.txt"
-df = pd.read_csv(hist_file, delimiter=',', index_col=False)
-df['Date_timestamp'] = pd.to_datetime(df['Date'])
+# hist_file = radio_forex[0:6] + "_historical.txt"
+# df = pd.read_csv(hist_file, delimiter=',', index_col=False)
+# df['Date_timestamp'] = pd.to_datetime(df['Date'])
 
-# Prepare for plot
-str_datetime = df['Date'].iloc[0]
-str_date = str_datetime[0:10]
+# # Prepare for plot
+# str_datetime = df['Date'].iloc[0]
+# str_date = str_datetime[0:10]
 
-df_datetime = datetime_list(str_date)
-if radio_forex == "EURUSD":
-    plot_graph(df,df_pred)
-    prediction_table(df_pred)
-else:
-    plot_graph(df)
+# df_datetime = datetime_list(str_date)
+# if radio_forex == "EURUSD":
+#     plot_graph(df,df_pred)
+#     prediction_table(df_pred)
+# else:
+#     plot_graph(df)
 
 st.write('here i am')
 
