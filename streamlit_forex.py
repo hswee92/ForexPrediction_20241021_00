@@ -26,8 +26,6 @@ if radio_forex == "EURUSD":
          hist_file = radio_forex[0:6] + "_historical.txt"
          plotcolor = 'royalblue'
 
-
-
 elif radio_forex == "GBPUSD**":
          st.write("this is GBPUSD")
          # hist_file = radio_forex[0:6] + "_historical.txt"
@@ -44,7 +42,8 @@ df = pd.read_csv(hist_file, delimiter=',', index_col=False)
 
 # Prepare for plot
 str_datetime = df['Date'].iloc[0]
-st.write(str_datetime)
+st.write(str_datetime[0:10])
+
 st.write(type(str_datetime))
 str_date = str_datetime
 st.write(str_date)
@@ -58,16 +57,17 @@ st.write(type(str_date))
 
 
 # Plot
-fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(25,15))
-
-ax.plot(df['Date'],df['Close'],label="silhouette score",color=plotcolor) # marker='x' marker='.'
-ax.set(xlabel='Time')  
-ax.set(ylabel='Exchange Rate') 
-plottitle = radio_forex[0:6] + 'Latest Exchange Rate'
-ax.set_title(plottitle)
-
-# ax.set_xlim(df['Date'].iloc[0], df_datetime['Date'].iloc[-1]) 
-st.pyplot(fig)
+@st.cache_data
+def plot_graph(df)
+         fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(25,15))
+         ax.plot(df['Date'],df['Close'],label="silhouette score",color=plotcolor) # marker='x' marker='.'
+         ax.set(xlabel='Time')  
+         ax.set(ylabel='Exchange Rate') 
+         plottitle = radio_forex[0:6] + 'Latest Exchange Rate'
+         ax.set_title(plottitle)
+         
+         # ax.set_xlim(df['Date'].iloc[0], df_datetime['Date'].iloc[-1]) 
+         st.pyplot(fig)
 
 st.table(df)
 
