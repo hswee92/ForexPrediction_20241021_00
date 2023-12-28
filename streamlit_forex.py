@@ -38,15 +38,17 @@ def plot_graph(df,df_pred=pd.DataFrame()):
 
 @st.cache_data
 def prediction_table(df):
+    table = st.container(border=True)
+
     df2 = df
     df2['Date'] = df2['Date'].str.slice(11,19)
     df2['Close'] = df2['Close'].round(5)
     df2_set1 = df2[['Date','Close']][0:10]
     df2_set2 = df2[['Date','Close']][10:20]
     df2_set3 = df2[['Date','Close']][20:30]
-    st.write(df2_set1.T)
-    st.write(df2_set2.T)
-    st.write(df2_set3.T)
+    table.write(df2_set1.T)
+    table.write(df2_set2.T)
+    table.write(df2_set3.T)
 
 
          
@@ -61,33 +63,19 @@ placeholder = st.empty()
 placeholder.title('Forex Pair Graphs')
 
 st.sidebar.title("Forex Pair")
-radio_forex = st.sidebar.radio("Pick the interested forex pair.", ["EURUSD", "GBPUSD**", "USDJPY**"], key='forex')
-st.sidebar.write("** Prediction not available.")
+
+
 
 st.write("Hello! Welcome to Forex Prediction page!")
 
-# if radio_forex == "EURUSD":
-#     st.write("this is EURUSD")
-#     hist_file = radio_forex[0:6] + "_historical.txt"
-#     plotcolor = 'royalblue'
+st.write("According to Triennial Central Bank Survey conducted by Bank for International Settlements (2022), "
+         "US dollar is still the world’s dominant currency. 88.5% of all trades in April 2022 involve US dollar, "
+         "followed by Euro (30.5%), Japanese Yen (16.7%) and Great Britain Pound (12.9%).")
 
-#     pred_file = radio_forex[0:6] + "_prediction.txt"
-#     df_pred = pd.read_csv(pred_file, delimiter=',', index_col=False)
-#     df_pred['Date_timestamp'] = pd.to_datetime(df_pred['Date'])
-
-# elif radio_forex == "GBPUSD**":
-#     st.write("this is GBPUSD")
-#     # hist_file = radio_forex[0:6] + "_historical.txt"
-#     plotcolor = 'salmon'
-         
-# elif radio_forex == "USDJPY**":
-#     st.write("this is USDJPY")
-#     # hist_file = radio_forex[0:6] + "_historical.txt"
-#     plotcolor = 'forestgreen'
+st.write("** Prediction not available.")
 
 
-
-tab1, tab2, tab3 = st.tabs(["EURUSD", "GBPUSD**", "USDJPY**"])
+EURUSD, GBPUSD, USDJPY = st.tabs(["EURUSD", "GBPUSD**", "USDJPY**"])
 with tab1:
     forex_pair = "EURUSD"
     st.write("this is EURUSD")
@@ -113,7 +101,7 @@ with tab1:
 
 
 
-with tab2:
+with GBPUSD:
     forex_pair = "GBPUSD"
     st.write("this is GBPUSD")
     # hist_file = forex_pair[0:6] + "_historical.txt"
@@ -132,7 +120,7 @@ with tab2:
     plot_graph(df)
 
 
-with tab3:
+with USDJPY:
     forex_pair = "USDJPY"
     st.write("this is USDJPY")
     # hist_file = forex_pair[0:6] + "_historical.txt"
@@ -154,22 +142,6 @@ with tab3:
 
 
 
-# hist_file = radio_forex[0:6] + "_historical.txt"
-# df = pd.read_csv(hist_file, delimiter=',', index_col=False)
-# df['Date_timestamp'] = pd.to_datetime(df['Date'])
-
-# # Prepare for plot
-# str_datetime = df['Date'].iloc[0]
-# str_date = str_datetime[0:10]
-
-# df_datetime = datetime_list(str_date)
-# if radio_forex == "EURUSD":
-#     plot_graph(df,df_pred)
-#     prediction_table(df_pred)
-# else:
-#     plot_graph(df)
-
-st.write('here i am')
 
 
 # container for information below
