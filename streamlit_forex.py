@@ -26,7 +26,7 @@ if radio_forex == "EURUSD":
          path = "./" + hist_file
          st.write(path)
          df = pd.read_csv(path, delimiter=',', index_col=False)
-         st.dataframe(df)
+         st.table(df)
 
 elif radio_forex == "GBPUSD**":
          st.write("this is GBPUSD")
@@ -39,7 +39,7 @@ elif radio_forex == "USDJPY**":
 hist_file = radio_forex[0:6] + "_historical.txt"
 path = "./" + hist_file
 df = pd.read_csv(path, delimiter=',', index_col=False)
-st.write(df)
+st.table(df)
 
 rand = np.random.normal(1, 2, size=20)
 fig, ax = plt.subplots()
