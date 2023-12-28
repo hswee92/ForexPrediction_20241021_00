@@ -21,7 +21,10 @@ st.write("Hello! Welcome to Forex Prediction page!")
 
 if radio_forex == "EURUSD":
          st.write("this is EURUSD")
-         # hist_file = radio_forex[0:6] + "_historical.txt"
+         hist_file = radio_forex[0:6] + "_historical.txt"
+         path = "./" + hist_file
+         df = pd.read_csv(path, delimiter=',', index_col=False)
+         st.write(df)
 
 elif radio_forex == "GBPUSD**":
          st.write("this is GBPUSD")
