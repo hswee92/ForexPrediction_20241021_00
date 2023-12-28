@@ -39,6 +39,8 @@ elif radio_forex == "USDJPY**":
 hist_file = radio_forex[0:6] + "_historical.txt"
 path = "./" + hist_file
 df = pd.read_csv(hist_file, delimiter=',', index_col=False)
+df['Date_timestamp'] = pd.to_datetime(df['Date'])
+
 
 # Prepare for plot
 str_datetime = df['Date'].iloc[0]
