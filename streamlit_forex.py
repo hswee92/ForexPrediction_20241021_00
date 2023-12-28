@@ -91,19 +91,21 @@ if radio_forex == "EURUSD":
 else:
          plot_graph(df)
 
+
+container = st.container(border=True)
 # create timestamp 
 MT4_timezone = pytz.timezone('EET') 
 MT4_now = datetime.now(MT4_timezone)
 str_MT4 = MT4_now.strftime("%d-%m-%Y %H:%M:%S")
-st.markdown("**Server time:** " + str_MT4)
+container.write("**Server time:** " + str_MT4)
 
 local_timezone = pytz.timezone('Asia/Kuala_Lumpur') 
 local_now = datetime.now(local_timezone)
 str_local = local_now.strftime("%d-%m-%Y %H:%M:%S")
-st.write("**Malaysia time:** "+  str_local)
+container.write("**Malaysia time:** "+  str_local)
 
 
-st.write("**:red[Disclaimer: Trading involves risk. \n"
+container.write("**:red[Disclaimer: Trading involves risk. \n"
          "As a general rule, you should only trade in financial products that "
          "you are familiar with and understand the risk associated with them. \n"
          "Trade at your own risk.]**")
