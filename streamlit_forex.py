@@ -55,7 +55,7 @@ df_datetime['Date'] = pd.date_range(str_date, periods=1440, freq="T")
 @st.cache_data
 def plot_graph(df):
          fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(25,15))
-         ax.plot(df['Date'],df['Close'],label="silhouette score",color=plotcolor) # marker='x' marker='.'
+         ax.plot(df['Date_timestamp'],df['Close'],label="silhouette score",color=plotcolor) # marker='x' marker='.'
          ax.set(xlabel='Time')  
          ax.set(ylabel='Exchange Rate') 
          plottitle = radio_forex[0:6] + 'Latest Exchange Rate'
