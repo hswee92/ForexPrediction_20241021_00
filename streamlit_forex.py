@@ -54,9 +54,9 @@ def datetime_list(str_date):
     df['Date'] = pd.date_range(str_date, periods=1440, freq="T")
     return df
 
-st.empty()
 
-st.title('Forex Pair Graphs')
+placeholder = st.empty()
+placeholder.title('Forex Pair Graphs')
 
 st.sidebar.title("Forex Pair")
 radio_forex = st.sidebar.radio("Pick the interested forex pair.", ["EURUSD", "GBPUSD**", "USDJPY**"], key='forex')
@@ -98,11 +98,11 @@ if radio_forex == "EURUSD":
 else:
     plot_graph(df)
 
-st.write('here i am')
+placeholder.write('here i am')
 
 
 # container for information below
-container = st.container(border=True)
+container = placeholder.container(border=True)
 
 MT4_timezone = pytz.timezone('EET') 
 MT4_now = datetime.now(MT4_timezone)
