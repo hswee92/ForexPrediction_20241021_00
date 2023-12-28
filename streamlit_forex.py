@@ -43,8 +43,13 @@ path = "./" + hist_file
 df = pd.read_csv(hist_file, delimiter=',', index_col=False)
 
 # Prepare for plot
-str_datetime = df['Date'].iloc[0].strftime('%Y.%m.%d')
+str_datetime = df['Date'].iloc[0]
+print(str_datetime)
 str_date = str_datetime[0:10]
+print(str_date)
+
+# .strftime('%Y.%m.%d')
+
 
 df_datetime = pd.DataFrame()
 df_datetime['Date'] = pd.date_range(str_date, periods=1440, freq="T")
