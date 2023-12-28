@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from datetime import datetime
+
 import time
 import warnings
 
@@ -31,7 +32,8 @@ elif radio_forex == "USDJPY**":
          # hist_file = radio_forex[0:6] + "_historical.txt"
 
 hist_file = radio_forex[0:6] + "_historical.txt"
-df = pd.read_csv(hist_file, delimiter=',', index_col=False)
+path = "./" + hist_file
+df = pd.read_csv(path, delimiter=',', index_col=False)
 st.write(df)
 
 rand = np.random.normal(1, 2, size=20)
