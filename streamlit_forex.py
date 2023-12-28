@@ -3,6 +3,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
 from datetime import datetime
 from github import Github
 import pytz
@@ -28,6 +29,7 @@ def plot_graph(df,df_pred=pd.DataFrame()):
          plottitle = radio_forex[0:6] + 'Latest Exchange Rate'
          ax.set_title(plottitle)
          ax.set_xlim(df['Date_timestamp'].iloc[0], df_datetime['Date'].iloc[-1]) 
+         ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m'))
          ax.legend()
          st.pyplot(fig)
 
@@ -93,14 +95,16 @@ else:
 # create timestamp 
 local_timezone = pytz.timezone('Asia/Kuala_Lumpur') 
 local_now = datetime.now(local_timezone)
-st.write(local_now)
+str_local = local_now.strftime("%d-%m-%Y %H:%M:%S")
+st.write("Malaysia time: " str_local)
 
 MT4_timezone = pytz.timezone('EET') 
 MT4_now = datetime.now(MT4_timezone)
-st.write(MT4_now)
+str_MT4 = MT4_now.strftime("%d-%m-%Y %H:%M:%S")
+st.write("Server time: " + str_MT4)
 
 now = datetime.now()
-current_time = now.strftime("%H:%M:%S")
+current_time = now.strftime("%d-%m-%Y %H:%M:%S")
 cur_time = "Current Time = " + current_time
 st.write(cur_time)
 
