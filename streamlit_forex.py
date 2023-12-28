@@ -16,21 +16,21 @@ import warnings
 # define functions
 
 @st.cache_data
-def plot_graph(df,df_pred=pd.DataFrame()):
+def plot_graph(df_hist,df_predict=pd.DataFrame()):
     graph = st.container(border=True)
     
     fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(10,5))
-    ax.plot(df['Date_timestamp'],df['Close'],label="Historical",color=plotcolor) # marker='x' marker='.'
+    ax.plot(df_hist['Date_timestamp'],df_hist['Close'],label="Historical",color=plotcolor) # marker='x' marker='.'
 
     if forex_pair[0:6] == "EURUSD":
-        df_pred = pd.concat([df.iloc[-2:], df_pred]).reset_index(drop=True)
-        ax.plot(df_pred['Date_timestamp'],df_pred['Close'],label="Prediction",color='red',linewidth=2.5)
+        df_predict = pd.concat([df_hist.iloc[-2:], df_predict]).reset_index(drop=True)
+        ax.plot(df_predict['Date_timestamp'],df_predict['Close'],label="Prediction",color='red',linewidth=2.5)
 
     ax.set(xlabel='EET Time')  
     ax.set(ylabel='Exchange Rate') 
     plottitle = forex_pair[0:6] + ' Latest Exchange Rate'
     ax.set_title(plottitle)
-    ax.set_xlim(df['Date_timestamp'].iloc[0], df_datetime['Date'].iloc[-1]) 
+    ax.set_xlim(df_hist['Date_timestamp'].iloc[0], df_datetime['Date'].iloc[-1]) 
     ax.xaxis.set_major_formatter(mdates.DateFormatter('%H:%M:%S'))
     ax.legend()
     graph.pyplot(fig)
@@ -55,9 +55,9 @@ def prediction_table(df_prediction):
          
 @st.cache_data
 def datetime_list(str_date):
-    df = pd.DataFrame()
-    df['Date'] = pd.date_range(str_date, periods=1440, freq="T")
-    return df
+    df_fulldate = pd.DataFrame()
+    df_fulldate['Date'] = pd.date_range(str_date, periods=1440, freq="T")
+    return df_fulldate
 
 
 placeholder = st.empty()
