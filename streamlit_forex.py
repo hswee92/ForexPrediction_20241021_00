@@ -17,20 +17,15 @@ import warnings
 
 @st.cache_data
 def plot_graph(df,df_pred=pd.DataFrame()):
-    fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(15,8))
+    fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(10,5))
     ax.plot(df['Date_timestamp'],df['Close'],label="Historical",color=plotcolor) # marker='x' marker='.'
 
     if radio_forex == "EURUSD":
-        # st.write(df.iloc[-1].T)
-        
-        st.write(df)
-        st.write(df.iloc[-2:])
-        # df_pred = pd.merge(df_pred, df.iloc[-2:], how='left', on=['Date_timestamp', 'Date_timestamp'])
         df_pred = pd.concat([df.iloc[-2:], df_pred]).reset_index(drop=True)
         st.write(df_pred)
         ax.plot(df_pred['Date_timestamp'],df_pred['Close'],label="Prediction",color='red',linewidth=2.5)
 
-    ax.set(xlabel='Time')  
+    ax.set(xlabel='EET Time')  
     ax.set(ylabel='Exchange Rate') 
     plottitle = radio_forex[0:6] + 'Latest Exchange Rate'
     ax.set_title(plottitle)
