@@ -45,7 +45,7 @@ df = pd.read_csv(hist_file, delimiter=',', index_col=False)
 # Prepare for plot
 str_datetime = df['Date'].iloc[0]
 print(str_datetime)
-str_date = str_datetime[0:10]
+str_date = str_datetime.strftime('%Y.%m.%d')
 print(str_date)
 
 # .strftime('%Y.%m.%d')
