@@ -20,6 +20,7 @@ def plot_graph(df):
          ax.plot(df['Date_timestamp'],df['Close'],label="Historical",color=plotcolor) # marker='x' marker='.'
 
          if radio_forex == "EURUSD":
+                  df_pred = pd.concat([df.iloc[-1], df_pred]).reset_index(drop=True)
                   ax.plot(df_pred['Date_timestamp'],df_pred['Prediction'],label="Prediction",color='red',linewidth=2.5)
          
          ax.set(xlabel='Time')  
