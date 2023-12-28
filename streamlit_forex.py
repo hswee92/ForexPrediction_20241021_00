@@ -44,6 +44,7 @@ df = pd.read_csv(hist_file, delimiter=',', index_col=False)
 
 # Prepare for plot
 str_date = df['Date'].iloc[0][0:10]
+df_datetime = pd.DataFrame()
 df_datetime['Date'] = pd.date_range(str_date, periods=1440, freq="T")
 
 
