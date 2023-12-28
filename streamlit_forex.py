@@ -24,8 +24,8 @@ def plot_graph(df,df_pred=pd.DataFrame()):
         # st.write(df.iloc[-1].T)
         # df_pred = pd.concat([df.iloc[-1].T, df_pred]).reset_index(drop=True)
         st.write(df)
-        st.write(df.iloc[-2:-1])
-        df_pred = pd.merge(df_pred, df.iloc[-2:-1], how='left', on=['Date_timestamp', 'Date_timestamp'])
+        st.write(df.iloc[-2:])
+        df_pred = pd.merge(df_pred, df.iloc[-2:], how='left', on=['Date_timestamp', 'Date_timestamp'])
         st.write(df_pred)
         ax.plot(df_pred['Date_timestamp'],df_pred['Close'],label="Prediction",color='red',linewidth=2.5)
 
