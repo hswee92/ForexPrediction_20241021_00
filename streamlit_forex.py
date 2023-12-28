@@ -16,7 +16,7 @@ import warnings
 # define functions
 
 @st.cache_data
-def plot_graph(df,df_pred=pd.DataFrame(),date=str_date):
+def plot_graph(df,df_pred=pd.DataFrame(),date="xx"):
     graph = st.container(border=True)
     graph.write("This is the today's graph (" + date + ") for " + forex_pair[0:6] + ".")
     
