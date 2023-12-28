@@ -48,7 +48,7 @@ def prediction_table(df_prediction):
     df2_set2 = df2[['Date','Close']][10:20]
     df2_set3 = df2[['Date','Close']][20:30]
 
-    table.write(df2_set1)
+    table.write(df2)
     table.write(df2_set2)
     table.write(df2_set3)
 
