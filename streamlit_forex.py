@@ -34,9 +34,10 @@ def plot_graph(df,df_pred=pd.DataFrame()):
 
 @st.cache_data
 def prediction_table(df):
-         df['Date'] = df['Date'].str.slice(0, 10)
-         df = df.drop(['Date_timestamp'])
-         st.write(df.T)
+         df2 = df
+         df2['Date'] = df2['Date'].str.slice(0, 10)
+         df2 = df2.drop(['Date_timestamp'])
+         st.write(df2.T)
 
          
 @st.cache_data
