@@ -17,15 +17,17 @@ import warnings
 @st.cache_data
 def plot_graph(df):
          fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(25,15))
-         ax.plot(df['Date_timestamp'],df['Close'],label="silhouette score",color=plotcolor) # marker='x' marker='.'
+         ax.plot(df['Date_timestamp'],df['Close'],label="Historical",color=plotcolor) # marker='x' marker='.'
 
-         
+         if radio_forex == "EURUSD"
+                  ax.plot(df_pred['Date_timestamp'],df_pred['Close'],label="Prediction",color=red,linewidth=2.5)
          
          ax.set(xlabel='Time')  
          ax.set(ylabel='Exchange Rate') 
          plottitle = radio_forex[0:6] + 'Latest Exchange Rate'
          ax.set_title(plottitle)
          ax.set_xlim(df['Date_timestamp'].iloc[0], df_datetime['Date'].iloc[-1]) 
+         ax.legend()
          st.pyplot(fig)
 
 
@@ -36,7 +38,7 @@ def prediction_table(df):
          st.dataframe(df.T)
          
 @st.cache_data
-def datetime_list(str_date)
+def datetime_list(str_date):
          df = pd.DataFrame()
          df['Date'] = pd.date_range(str_date, periods=1440, freq="T")
          return df
@@ -54,6 +56,11 @@ if radio_forex == "EURUSD":
          hist_file = radio_forex[0:6] + "_historical.txt"
          plotcolor = 'royalblue'
 
+         pred_file = radio_forex[0:6] + "_prediction.txt"
+         df_pred = pd.read_csv(pred_file, delimiter=',', index_col=False)
+         df_pred['Date_timestamp'] = pd.to_datetime(df_pred['Date'])
+
+
 elif radio_forex == "GBPUSD**":
          st.write("this is GBPUSD")
          # hist_file = radio_forex[0:6] + "_historical.txt"
@@ -65,7 +72,6 @@ elif radio_forex == "USDJPY**":
          plotcolor = 'forestgreen'
 
 hist_file = radio_forex[0:6] + "_historical.txt"
-path = "./" + hist_file
 df = pd.read_csv(hist_file, delimiter=',', index_col=False)
 df['Date_timestamp'] = pd.to_datetime(df['Date'])
 
