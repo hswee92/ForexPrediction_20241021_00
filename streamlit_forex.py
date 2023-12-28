@@ -58,6 +58,9 @@ def plot_graph(df):
          ax.set(ylabel='Exchange Rate') 
          plottitle = radio_forex[0:6] + 'Latest Exchange Rate'
          ax.set_title(plottitle)
+
+         st.write(df['Date'].iloc[0])
+         st.write(df_datetime['Date'].iloc[-1])
          
          ax.set_xlim(df['Date'].iloc[0], df_datetime['Date'].iloc[-1]) 
          st.pyplot(fig)
