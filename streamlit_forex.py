@@ -21,7 +21,7 @@ def plot_graph(df,df_pred=pd.DataFrame()):
 
          if radio_forex == "EURUSD":
                   df_pred = pd.concat([df.iloc[-1], df_pred]).reset_index(drop=True)
-                  ax.plot(df_pred['Date_timestamp'],df_pred['Prediction'],label="Prediction",color='red',linewidth=2.5)
+                  ax.plot(df_pred['Date_timestamp'],df_pred['Close'],label="Prediction",color='red',linewidth=2.5)
          
          ax.set(xlabel='Time')  
          ax.set(ylabel='Exchange Rate') 
