@@ -2,5 +2,3 @@ pandas
 numpy
 matplotlib
 datetime
-schedule
-apscheduler
