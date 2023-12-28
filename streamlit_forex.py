@@ -36,7 +36,7 @@ elif radio_forex == "GBPUSD**":
 elif radio_forex == "USDJPY**":
          st.write("this is USDJPY")
          # hist_file = radio_forex[0:6] + "_historical.txt"
-         plotcolor = 'forest'
+         plotcolor = 'forestgreen'
 
 hist_file = radio_forex[0:6] + "_historical.txt"
 path = "./" + hist_file
