@@ -4,8 +4,8 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from datetime import datetime
-import requests
 from github import Github
+import pytz
 
 import time
 import warnings
@@ -35,7 +35,7 @@ def plot_graph(df,df_pred=pd.DataFrame()):
 @st.cache_data
 def prediction_table(df):
          df2 = df
-         df2['Date'] = df2['Date'].str.slice(0, 10)
+         df2['Date'] = df2['Date'].str.slice(11,19)
          df3 = df2[['Date','Close']]
          st.write(df3.T)
 
@@ -89,10 +89,14 @@ if radio_forex == "EURUSD":
 else:
          plot_graph(df)
 
+# create timestamp 
 
+utc_now = datetime.datetime.utcnow()
+st.write(utc_now)
 
-
-
+local_timezone = pytz.timezone('Asia/Kuala_Lumpur') 
+local_now = datetime.datetime.local_timezone()
+st.write(local_now)
 
 now = datetime.now()
 current_time = now.strftime("%H:%M:%S")
@@ -105,18 +109,12 @@ st.write("**:red[Disclaimer: Trading involves risk. \n"
          "you are familiar with and understand the risk associated with them. \n"
          "Trade at your own risk.]**")
 
-st.write("st.session_state")
-st.session_state
+# st.write("st.session_state")
+# st.session_state
 
 time.sleep(5)
 st.rerun()
 
-         
-# path = "https://raw.githubusercontent.com/hswee92/ForexPrediction/main/" + hist_file
-# st.write(path)
-# response = requests.get(path)
-# df = pd.read_csv(path, delimiter=',', index_col=False)
-# st.table(df)
 
 
 
