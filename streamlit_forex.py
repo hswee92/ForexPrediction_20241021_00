@@ -24,8 +24,7 @@ st.write("Hello! Welcome to Forex Prediction page!")
 if radio_forex == "EURUSD":
          st.write("this is EURUSD")
          hist_file = radio_forex[0:6] + "_historical.txt"
-         
-         path = "https://github.com/hswee92/ForexPrediction/blob/main/" + hist_file
+         path = "https://raw.githubusercontent.com/hswee92/ForexPrediction/blob/main/" + hist_file
          response = requests.get(path)
          
          df2 = pd.read_csv(pd.compat.StringIO(data))
