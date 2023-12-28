@@ -21,11 +21,9 @@ def plot_graph(df,df_pred=pd.DataFrame()):
     ax.plot(df['Date_timestamp'],df['Close'],label="Historical",color=plotcolor) # marker='x' marker='.'
 
     if radio_forex == "EURUSD":
-        st.write("df")
-        st.write(df.iloc[-1])
-        st.write("df_pred")
-        st.write(df_pred.iloc[0])
+        st.write(df.pred)
         df_pred = pd.concat([df.iloc[-1], df_pred]).reset_index(drop=True)
+        st.write(df.pred)
         ax.plot(df_pred['Date_timestamp'],df_pred['Close'],label="Prediction",color='red',linewidth=2.5)
 
     ax.set(xlabel='Time')  
@@ -33,7 +31,7 @@ def plot_graph(df,df_pred=pd.DataFrame()):
     plottitle = radio_forex[0:6] + 'Latest Exchange Rate'
     ax.set_title(plottitle)
     ax.set_xlim(df['Date_timestamp'].iloc[0], df_datetime['Date'].iloc[-1]) 
-    ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m'))
+    ax.xaxis.set_major_formatter(mdates.DateFormatter('%H:%M:%S'))
     ax.legend()
     st.pyplot(fig)
 
