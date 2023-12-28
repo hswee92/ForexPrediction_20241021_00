@@ -61,6 +61,7 @@ def plot_graph(df):
          
          ax.set_xlim(df['Date'].iloc[0], df_datetime['Date'].iloc[-1]) 
          st.pyplot(fig)
+st.write(df.iloc[10])
 
 plot_graph(df)
 
