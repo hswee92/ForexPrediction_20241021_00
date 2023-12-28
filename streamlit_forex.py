@@ -44,9 +44,11 @@ df = pd.read_csv(hist_file, delimiter=',', index_col=False)
 
 # Prepare for plot
 str_datetime = df['Date'].iloc[0]
-print(str_datetime)
+st.write(str_datetime)
+st.write(type(str_datetime))
 str_date = str_datetime
-print(str_date)
+st.write(str_date)
+st.write(type(str_date))
 
 # .strftime('%Y.%m.%d')
 
@@ -56,7 +58,7 @@ print(str_date)
 
 
 # Plot
-fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(50,30))
+fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(25,15))
 
 ax.plot(df['Date'],df['Close'],label="silhouette score",color=plotcolor) # marker='x' marker='.'
 ax.set(xlabel='Time')  
