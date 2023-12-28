@@ -15,7 +15,7 @@ import warnings
 # define functions
 
 @st.cache_data
-def plot_graph(df):
+def plot_graph(df,df_pred=pd.DataFrame()):
          fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(15,8))
          ax.plot(df['Date_timestamp'],df['Close'],label="Historical",color=plotcolor) # marker='x' marker='.'
 
@@ -82,7 +82,7 @@ str_date = str_datetime[0:10]
 
 df_datetime = datetime_list(str_date)
 
-plot_graph(df)
+plot_graph(df,df_pred)
 
 st.table(df)
 
