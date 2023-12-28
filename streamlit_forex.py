@@ -36,8 +36,8 @@ def plot_graph(df,df_pred=pd.DataFrame()):
 def prediction_table(df):
          df2 = df
          df2['Date'] = df2['Date'].str.slice(0, 10)
-         df2 = df2.drop(['Date_timestamp'])
-         st.write(df2.T)
+         df3 = df2[['Date','Close']]
+         st.write(df3.T)
 
          
 @st.cache_data
