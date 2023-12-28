@@ -54,6 +54,8 @@ def datetime_list(str_date):
     df['Date'] = pd.date_range(str_date, periods=1440, freq="T")
     return df
 
+st.empty()
+
 st.title('Forex Pair Graphs')
 
 st.sidebar.title("Forex Pair")
