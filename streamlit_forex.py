@@ -24,11 +24,14 @@ if radio_forex == "EURUSD":
          hist_file = radio_forex[0:6] + "_historical.txt"
          
          path = "https://github.com/hswee92/ForexPrediction/blob/main/" + hist_file
-         path = os.path.join(hist_file)
+         response = requests.get(path)
+
+         df2 = pd.read_csv(StringIO(response.text))
          
          st.write(path)
          df = pd.read_csv(path, delimiter=',', index_col=False)
          st.table(df)
+         st.table(df2)
 
 elif radio_forex == "GBPUSD**":
          st.write("this is GBPUSD")
