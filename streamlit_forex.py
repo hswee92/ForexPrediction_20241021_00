@@ -17,10 +17,22 @@ import warnings
 
 @st.cache_data
 def plot_graph(df_hist,df_predict=pd.DataFrame()):
+    
+    # identify index that change state
+    # for i in range(1, len(df)):
+    # if df['state'].iloc[i] != df['state'].iloc[i - 1]:
+    #     change_indices.append(i)
+    
+    
+    
+    
+    
     graph = st.container(border=True)
     
     fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(10,5))
     ax.plot(df_hist['Date_timestamp'],df_hist['Close'],label="Historical",color=plotcolor) # marker='x' marker='.'
+    ax.plot([df_hist['Date_timestamp'].iloc[0], df_datetime['Date'].iloc[-1]]],
+            [df_hist['Close'].iloc[0],df_hist['Close'].iloc[0]],color=black, linestyle='dotted')
 
     if forex_pair[0:6] == "EURUSD":
         df_predict = pd.concat([df_hist.iloc[-2:], df_predict]).reset_index(drop=True)
