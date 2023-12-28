@@ -21,6 +21,10 @@ def plot_graph(df,df_pred=pd.DataFrame()):
          ax.plot(df['Date_timestamp'],df['Close'],label="Historical",color=plotcolor) # marker='x' marker='.'
 
          if radio_forex == "EURUSD":
+                  st.write("df")
+                  st.write(df.iloc[-1])
+                  st.write("df_pred")
+                  st.write(df_pred[0])
                   df_pred = pd.concat([df.iloc[-1], df_pred]).reset_index(drop=True)
                   ax.plot(df_pred['Date_timestamp'],df_pred['Close'],label="Prediction",color='red',linewidth=2.5)
          
@@ -110,8 +114,8 @@ container.write("**:red[Disclaimer: Trading involves risk. \n"
          "you are familiar with and understand the risk associated with them. \n"
          "Trade at your own risk.]**")
 
-# st.write("st.session_state")
-# st.session_state
+st.write("st.session_state")
+st.session_state
 
 time.sleep(5)
 st.rerun()
