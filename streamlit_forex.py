@@ -8,7 +8,7 @@ from datetime import datetime
 import time
 import warnings
 
-warnings.simplefilter('ignore')
+# warnings.simplefilter('ignore')
 
 initial_state = 0
 st.title('Forex Pair Graphs')
