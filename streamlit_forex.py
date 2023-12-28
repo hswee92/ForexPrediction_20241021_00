@@ -93,9 +93,7 @@ with EURUSD:
 
     st.write("EURUSD pair is the **MOST** traded currency pair. \n"
              "In April 2022, EURUSD makes up 22.7% of total trades.")
-    
-    st.write("This is the today's graph (" + date + ") for " + forex_pair[0:6] + ".")
-
+    st.write("This is the today's graph (" + str_date + ") for " + forex_pair[0:6] + ".")
     plot_graph(df,df_pred,str_date)
     prediction_table(df_pred)
 
@@ -116,7 +114,7 @@ with GBPUSD:
 
     st.write("GBPUSD pair is the **THIRD** most traded currency pair. \n"
              "In April 2022, GBPUSD makes up 9.6% of total trades.")
-
+    st.write("This is the today's graph (" + str_date + ") for " + forex_pair[0:6] + ".")
     plot_graph(df)
 
 
@@ -136,6 +134,7 @@ with USDJPY:
 
     st.write("USDJPY pair is the **SECOND** most traded currency pair. \n"
              "In April 2022, USDJPY makes up 13.2% of total trades.")
+    st.write("This is the today's graph (" + str_date + ") for " + forex_pair[0:6] + ".")
     plot_graph(df)
 
 
