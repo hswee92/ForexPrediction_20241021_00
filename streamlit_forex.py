@@ -2,8 +2,6 @@
 import streamlit as st
 import matplotlib.pyplot as plt
 import numpy as np
-# from schedule import every, repeat, run_pending
-# from apscheduler.schedulers.background import BackgroundScheduler
 from datetime import datetime
 import time
 import warnings
@@ -11,16 +9,20 @@ import
 
 warnings.simplefilter('ignore')
 
-st.write("Hello! Welcome to Forex Prediction page!")
-
-
-# if st.button("Go Live2", key='live2'):
-#     st.rerun
-
 st.sidebar.title("Forex Pair")
 radio_forex = st.sidebar.radio("Pick the interested forex pair.", ["EURUSD", "GBPUSD**", "USDJPY**"], key='forex')
 st.sidebar.write("** Prediction not available.")
 
+st.write("Hello! Welcome to Forex Prediction page!")
+
+if radio_forex == "EURUSD":
+         st.write("this is EURUSD")
+elif radio_forex == "GBPUSD":
+         st.write("this is GBPUSD")
+elif radio_forex == "USDJPY":
+         st.write("this is USDJPY")
+
+         
 rand = np.random.normal(1, 2, size=20)
 fig, ax = plt.subplots()
 ax.hist(rand, bins=15)
