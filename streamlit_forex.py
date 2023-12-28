@@ -20,10 +20,20 @@ def plot_graph(df_hist,df_predict=pd.DataFrame()):
     
     # identify index that change state
     # for i in range(1, len(df)):
-    # if df['state'].iloc[i] != df['state'].iloc[i - 1]:
+    #     if df['state'].iloc[i] != df['state'].iloc[i - 1]:
     #     change_indices.append(i)
     
-    
+    def find_state_changes(data):
+    change_indices=""
+    for i in range(1, len(data)):
+        if data.iloc[i] != data.iloc[i - 1]:
+            change_indices.append(i)
+    return change_indices
+
+    # Use apply() along the column 'state' to find state changes
+    change_indices = df_hist['state'].apply(lambda x: find_state_changes(df['state']))
+
+    graph.write(change_indices)
     
     
     
