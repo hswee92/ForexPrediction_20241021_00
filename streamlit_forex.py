@@ -41,6 +41,10 @@ path = "./" + hist_file
 df = pd.read_csv(hist_file, delimiter=',', index_col=False)
 st.table(df)
 
+path = "./data/" + hist_file
+df = pd.read_csv(path, delimiter=',', index_col=False)
+st.table(df)
+
 rand = np.random.normal(1, 2, size=20)
 fig, ax = plt.subplots()
 ax.hist(rand, bins=15)
