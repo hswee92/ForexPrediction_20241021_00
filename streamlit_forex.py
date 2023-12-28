@@ -23,7 +23,7 @@ def plot_graph(df_hist,df_predict=pd.DataFrame()):
     #     if df['state'].iloc[i] != df['state'].iloc[i - 1]:
     #     change_indices.append(i)
     
-    def find_state_changes(data):
+    def find_state_changes(dataframe):
     change_indices=""
     for i in range(1, len(data)):
         if data.iloc[i] != data.iloc[i - 1]:
@@ -31,7 +31,7 @@ def plot_graph(df_hist,df_predict=pd.DataFrame()):
     return change_indices
 
     # Use apply() along the column 'state' to find state changes
-    change_indices = df_hist['state'].apply(lambda x: find_state_changes(df['state']))
+    change_indices = df_hist['state'].apply(lambda x: find_state_changes(df_hist['state']))
 
     graph.write(change_indices)
     
