@@ -42,16 +42,11 @@ df = pd.read_csv(hist_file, delimiter=',', index_col=False)
 
 # Prepare for plot
 str_datetime = df['Date'].iloc[0]
-st.write(str_datetime[0:10])
-str_date = str_datetime
+str_date = str_datetime[0:10].replace('-', '.')
 st.write(str_date)
 
-
-# .strftime('%Y.%m.%d')
-
-
-# df_datetime = pd.DataFrame()
-# df_datetime['Date'] = pd.date_range(str_date, periods=1440, freq="T")
+df_datetime = pd.DataFrame()
+df_datetime['Date'] = pd.date_range(str_date, periods=1440, freq="T")
 
 
 # Plot
