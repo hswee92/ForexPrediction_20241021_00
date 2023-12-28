@@ -23,7 +23,7 @@ if radio_forex == "EURUSD":
          st.write("this is EURUSD")
          hist_file = radio_forex[0:6] + "_historical.txt"
          
-         path = "./" + hist_file
+         path = "https://github.com/hswee92/ForexPrediction/blob/main/" + hist_file
          st.write(path)
          df = pd.read_csv(path, delimiter=',', index_col=False)
          st.table(df)
