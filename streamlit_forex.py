@@ -17,6 +17,8 @@ import warnings
 
 @st.cache_data
 def plot_graph(df,df_pred=pd.DataFrame()):
+    graph = st.container(border=True)
+    
     fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(10,5))
     ax.plot(df['Date_timestamp'],df['Close'],label="Historical",color=plotcolor) # marker='x' marker='.'
 
@@ -83,8 +85,6 @@ elif radio_forex == "USDJPY**":
     # hist_file = radio_forex[0:6] + "_historical.txt"
     plotcolor = 'forestgreen'
 
-# container for information graph
-graph = st.container(border=True)
 
 
 hist_file = radio_forex[0:6] + "_historical.txt"
