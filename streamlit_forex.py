@@ -31,7 +31,7 @@ def plot_graph(df,df_pred=pd.DataFrame()):
     ax.set_xlim(df['Date_timestamp'].iloc[0], df_datetime['Date'].iloc[-1]) 
     ax.xaxis.set_major_formatter(mdates.DateFormatter('%H:%M:%S'))
     ax.legend()
-    st.pyplot(fig)
+    graph.pyplot(fig)
 
 
 @st.cache_data
@@ -83,6 +83,10 @@ elif radio_forex == "USDJPY**":
     # hist_file = radio_forex[0:6] + "_historical.txt"
     plotcolor = 'forestgreen'
 
+# container for information graph
+graph = st.container(border=True)
+
+
 hist_file = radio_forex[0:6] + "_historical.txt"
 df = pd.read_csv(hist_file, delimiter=',', index_col=False)
 df['Date_timestamp'] = pd.to_datetime(df['Date'])
@@ -98,11 +102,11 @@ if radio_forex == "EURUSD":
 else:
     plot_graph(df)
 
-placeholder.write('here i am')
+st.write('here i am')
 
 
 # container for information below
-container = placeholder.container(border=True)
+container = st.container(border=True)
 
 MT4_timezone = pytz.timezone('EET') 
 MT4_now = datetime.now(MT4_timezone)
