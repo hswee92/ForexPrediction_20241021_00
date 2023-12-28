@@ -119,7 +119,7 @@ st.write("st.session_state")
 st.session_state
 
 time.sleep(5)
-st.rerun()
+st.experimental_rerun()
 
 
 
