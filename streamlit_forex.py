@@ -81,10 +81,12 @@ str_datetime = df['Date'].iloc[0]
 str_date = str_datetime[0:10]
 
 df_datetime = datetime_list(str_date)
+if radio_forex == "EURUSD":
+         plot_graph(df,df_pred)
+         prediction_table(df_pred)
+else:
+         plot_graph(df)
 
-plot_graph(df,df_pred)
-
-st.table(df)
 
 
 
