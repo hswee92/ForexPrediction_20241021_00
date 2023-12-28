@@ -90,13 +90,16 @@ else:
          plot_graph(df)
 
 # create timestamp 
-
 utc_now = datetime.datetime.utcnow()
 st.write(utc_now)
 
 local_timezone = pytz.timezone('Asia/Kuala_Lumpur') 
 local_now = datetime.datetime.local_timezone()
 st.write(local_now)
+
+MT4_timezone = pytz.timezone('EET') 
+MT4_now = datetime.datetime.local_timezone()
+st.write(MT4_now)
 
 now = datetime.now()
 current_time = now.strftime("%H:%M:%S")
