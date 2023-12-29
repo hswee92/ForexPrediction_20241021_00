@@ -147,25 +147,26 @@ with EURUSD:
     forex_pair = "EURUSD"    
     
     plotcolor = 'royalblue'
-    pred_file = forex_pair[0:6] + "_prediction.txt"
-    df_pred = pd.read_csv(pred_file, delimiter=',', index_col=False)
-    df_pred['Date_timestamp'] = pd.to_datetime(df_pred['Date'])
+    if pred_toggle: 
+        pred_file = forex_pair[0:6] + "_prediction.txt"
+        df_pred = pd.read_csv(pred_file, delimiter=',', index_col=False)
+        df_pred['Date_timestamp'] = pd.to_datetime(df_pred['Date'])
 
-    hist_file = forex_pair[0:6] + "_historical.txt"
-    df = pd.read_csv(hist_file, delimiter=',', index_col=False)
-    df['Date_timestamp'] = pd.to_datetime(df['Date'])
+        hist_file = forex_pair[0:6] + "_historical.txt"
+        df = pd.read_csv(hist_file, delimiter=',', index_col=False)
+        df['Date_timestamp'] = pd.to_datetime(df['Date'])
 
-    # Prepare for plot
-    str_datetime = df['Date'].iloc[0]
-    str_date = str_datetime[0:10]
+        # Prepare for plot
+        str_datetime = df['Date'].iloc[0]
+        str_date = str_datetime[0:10]
 
-    df_datetime = datetime_list(str_date)
+        df_datetime = datetime_list(str_date)
 
-    st.write("EURUSD pair is the **MOST** traded currency pair. \n"
-             "In April 2022, EURUSD makes up 22.7% of total trades.")
-    st.write("This is the today's graph (" + str_date + ") for " + forex_pair[0:6] + ".")
-    plot_graph(df,df_pred)
-    prediction_table(df_pred)
+        st.write("EURUSD pair is the **MOST** traded currency pair. \n"
+                "In April 2022, EURUSD makes up 22.7% of total trades.")
+        st.write("This is the today's graph (" + str_date + ") for " + forex_pair[0:6] + ".")
+        plot_graph(df,df_pred)
+        prediction_table(df_pred)
 
 
 with GBPUSD:
