@@ -16,7 +16,7 @@ import warnings
 # define functions
 
 @st.cache_data
-def plot_graph(df_hist,df_predict=pd.DataFrame()):
+def plot_graph(df_hist,df_predict=pd.DataFrame(),color=[]):
     
     df_hist['state'] = df_hist['daychange'].apply(determine_state)    
     change_index_list = state_change(df_hist['state'])
