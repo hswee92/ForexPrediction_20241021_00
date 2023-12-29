@@ -53,6 +53,8 @@ def plot_graph(df_hist,df_predict=pd.DataFrame()):
     y_max = ymax + ymax*0.0005
     y_min = ymin - ymin*0.0005
 
+    st.write (change_index_list)
+
     #draw box
     for q in range(len(change_index_list)-1):
         x_min = df_datetime['Date'].iloc[change_index_list[q]]
@@ -61,8 +63,7 @@ def plot_graph(df_hist,df_predict=pd.DataFrame()):
         x_box = [x_min, x_min, x_max, x_max] 
         y_box = [y_min,y_max,y_max,y_min]
 
-        # plt.plot(x_box, y_box , 'red', linewidth=1.5)
-        plt.fill(x_box, y_box,color=graph_color, alpha=0.2,edgecolor='none')
+        plt.fill(x_box, y_box,color=graph_color, alpha=0.1,edgecolor='none')
 
 
     ax.set(xlabel='Eastern European Time')  
@@ -161,7 +162,7 @@ EURUSD, GBPUSD, USDJPY = st.tabs(["EURUSD", "GBPUSD**", "USDJPY**"])
 with EURUSD:
     forex_pair = "EURUSD"    
     
-    plotcolor = 'royalblue'
+    # plotcolor = 'royalblue'
     hist_file = forex_pair[0:6] + "_historical.txt"
     df = pd.read_csv(hist_file, delimiter=',', index_col=False)
     df['Date_timestamp'] = pd.to_datetime(df['Date'])
@@ -197,7 +198,7 @@ with EURUSD:
 with GBPUSD:
     forex_pair = "GBPUSD"
 
-    plotcolor = 'salmon'
+    # plotcolor = 'salmon'
     hist_file = forex_pair[0:6] + "_historical.txt"
     df = pd.read_csv(hist_file, delimiter=',', index_col=False)
     df['Date_timestamp'] = pd.to_datetime(df['Date'])
@@ -217,7 +218,7 @@ with GBPUSD:
 with USDJPY:
     forex_pair = "USDJPY"
 
-    plotcolor = 'forestgreen'
+    # plotcolor = 'forestgreen'
     hist_file = forex_pair[0:6] + "_historical.txt"
     df = pd.read_csv(hist_file, delimiter=',', index_col=False)
     df['Date_timestamp'] = pd.to_datetime(df['Date'])
