@@ -17,32 +17,15 @@ import warnings
 
 @st.cache_data
 def plot_graph(df_hist,df_predict=pd.DataFrame()):
-    
-    # identify index that change state
-    # for i in range(1, len(df)):
-    #     if df['state'].iloc[i] != df['state'].iloc[i - 1]:
-    #     change_indices.append(i)
-    
+        
 
     # get day change
     # get boolean of positive or negative
     # get change indices
-
-
-    def find_state_changes(dataframe):
-    change_indices=""
-    for i in range(1, len(data)):
-        if data.iloc[i] != data.iloc[i - 1]:
-            change_indices.append(i)
-    return change_indices
-
-    # Use apply() along the column 'state' to find state changes
-    change_indices = df_hist['state'].apply(lambda x: find_state_changes(df_hist['state']))
-
-    graph.write(change_indices)
     
-    
-    
+    df_hist['state'] = df_hist['daychange'].apply(determine_state)    
+    hist_change_index = state_change(df_hist['state'])
+        
     graph = st.container(border=True)
     
     fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(10,5))
@@ -89,7 +72,22 @@ def datetime_list(str_date):
     df_fulldate['Date'] = pd.date_range(str_date, periods=1440, freq="T")
     return df_fulldate
 
+def determine_state(col):
+    if col >= 0:
+        return True
+    else:
+        return False
+    
+def state_change(dataframe):
+    change_index = []
+    change_index.append(0)
+    for p in range(1,len(dataframe)):
+        if dataframe.iloc[p] != dataframe.iloc[p - 1]:
+            change_index.append(p) 
+    change_index.append(len(dataframe))
+    return change_index
 
+# -------------------------------------------------------------------------------------------------------------
 
 placeholder = st.empty()
 placeholder.title('Forex Pair')
