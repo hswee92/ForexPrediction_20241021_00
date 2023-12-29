@@ -56,7 +56,7 @@ def plot_graph(df_hist,df_predict=pd.DataFrame(),color=[]):
         x_max = df_datetime['Date'].iloc[q+1]
         graph_color = color_list[q] 
 
-        graph.write(q + ',' + graph_color)
+        graph.write(str(q) + ',' + graph_color)
         x_box = [x_min, x_min, x_max, x_max] 
         y_box = [y_min,y_max,y_max,y_min]
 
