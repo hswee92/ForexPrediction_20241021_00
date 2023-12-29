@@ -19,7 +19,7 @@ import warnings
 def plot_graph(df_hist,df_predict=pd.DataFrame(),color=[]):
     
     df_hist['state'] = df_hist['daychange'].apply(determine_state)    
-    change_index_list = state_change(df_hist['state'])
+    change_index_list,color_list = state_change(df_hist['state'])
     ymax = max(df_hist['Close'])
     ymin = min(df_hist['Close'])
         
@@ -36,9 +36,10 @@ def plot_graph(df_hist,df_predict=pd.DataFrame(),color=[]):
 
         df_predict['daychange'] = df_predict['Close'] - df_hist['Close'].iloc[0]
         df_predict['state'] = df_predict['daychange'].apply(determine_state)    
-        pred_change_index = state_change(df_predict['state'])
+        pred_change_index,pred_color = state_change(df_predict['state'])
         del pred_change_index[0] # remove first index so that no overlap
         change_index_list.append(pred_change_index)
+        color_list.append(pred_color)
         ymax_temp = max(df_predict['Close'])
         ymin_temp = min(df_predict['Close'])
         if ymax_temp > ymax: ymax = ymax_temp
@@ -54,7 +55,7 @@ def plot_graph(df_hist,df_predict=pd.DataFrame(),color=[]):
     for q in range(len(change_index_list)-1):
         x_min = df_datetime['Date'].iloc[q]
         x_max = df_datetime['Date'].iloc[q+1]
-        graph_color = color[q] 
+        graph_color = color_list[q] 
         x_box = [x_min, x_min, x_max, x_max] 
         y_box = [y_min,y_max,y_max,y_min]
 
@@ -120,7 +121,7 @@ def state_change(dataframe):
             else:
                 color.append('r')
     change_index.append(len(dataframe))
-    return change_index
+    return change_index, color
 
 # --------------------------------------------------------------------------------------------------------------------
 
