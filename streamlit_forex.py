@@ -53,8 +53,6 @@ def plot_graph(df_hist,df_predict=pd.DataFrame()):
     y_max = ymax + ymax*0.0005
     y_min = ymin - ymin*0.0005
 
-    st.write (change_index_list)
-
     #draw box
     for q in range(len(change_index_list)-1):
         x_min = df_datetime['Date'].iloc[change_index_list[q]]
@@ -63,7 +61,7 @@ def plot_graph(df_hist,df_predict=pd.DataFrame()):
         x_box = [x_min, x_min, x_max, x_max] 
         y_box = [y_min,y_max,y_max,y_min]
 
-        plt.fill(x_box, y_box,color=graph_color, alpha=0.1,edgecolor='none')
+        plt.fill(x_box, y_box,color=graph_color, alpha=0.15,edgecolor='none')
 
 
     ax.set(xlabel='Eastern European Time')  
