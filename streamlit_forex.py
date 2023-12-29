@@ -24,9 +24,9 @@ def plot_graph(df_hist,df_predict=pd.DataFrame(),color=[]):
     ymin = min(df_hist['Close'])
         
     graph = st.container(border=True)
-    plotcolor = 'grey'
+    plotcolor = 'black'
     fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(10,6))
-    ax.plot(df_hist['Date_timestamp'],df_hist['Close'],label="Historical",color=plotcolor) # marker='x' marker='.'
+    ax.plot(df_hist['Date_timestamp'],df_hist['Close'],label="Historical",color=plotcolor,linewidth=0.5) # marker='x' marker='.'
     ax.plot([df_hist['Date_timestamp'].iloc[0], df_datetime['Date'].iloc[-1]],
             [df_hist['Close'].iloc[0],df_hist['Close'].iloc[0]],color='black', linestyle='dotted')
 
@@ -68,6 +68,7 @@ def plot_graph(df_hist,df_predict=pd.DataFrame(),color=[]):
     ax.set(ylabel='Exchange Rate') 
     plottitle = forex_pair[0:6] + ' Latest Exchange Rate'
     ax.set_title(plottitle)
+    ax.set_ylim(y_min,y_max) 
     ax.set_xlim(df_hist['Date_timestamp'].iloc[0], df_datetime['Date'].iloc[-1]) 
     ax.xaxis.set_major_formatter(mdates.DateFormatter('%H:%M:%S'))
     ax.legend()
