@@ -43,7 +43,7 @@ def plot_graph(df_hist,df_predict=pd.DataFrame(),color=[]):
         for r in pred_change_index:
             date_index = df_datetime['Date'][df_datetime['Date'] == df_predict['Date_timestamp'].iloc[r]].index
             pred_new_index.append(date_index)
-        graph.write(list(pred_new_index))
+        graph.write(list(pred_new_index.values))
         change_index_list = change_index_list + pred_new_index
         color_list = color_list + pred_color
         ymax_temp = max(df_predict['Close'])
