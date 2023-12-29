@@ -58,7 +58,7 @@ def plot_graph(df_hist,df_predict=pd.DataFrame(),color=[]):
         x_box = [x_min, x_min, x_max, x_max] 
         y_box = [y_min,y_max,y_max,y_min]
 
-        # plt.plot(x_box, y_box , 'red', linewidth=1.5)
+        plt.plot(x_box, y_box , 'red', linewidth=1.5)
         plt.fill(x_box, y_box,color=graph_color, alpha=0.2)
 
 
