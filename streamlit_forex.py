@@ -80,6 +80,7 @@ def plot_graph(df_hist,df_predict=pd.DataFrame()):
 @st.cache_data
 def prediction_table(df_prediction):
     table = st.container(border=True)
+    table.title("Prediction")
     table.write("This is the trend prediction for the next 30 minutes.")
 
     df2 = df_prediction
@@ -89,7 +90,6 @@ def prediction_table(df_prediction):
     df2_set2 = df2[['Date','Close']][10:20]
     df2_set3 = df2[['Date','Close']][20:30]
     
-    table.title("Prediction")
     table.write(df2_set1.T)
     table.write(df2_set2.T)
     table.write(df2_set3.T)
