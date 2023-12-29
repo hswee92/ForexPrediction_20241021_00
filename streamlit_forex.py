@@ -16,7 +16,7 @@ import warnings
 # define functions
 
 @st.cache_data
-def plot_graph(df_hist,df_predict=pd.DataFrame(),color=[]):
+def plot_graph(df_hist,df_predict=pd.DataFrame()):
     
     df_hist['state'] = df_hist['daychange'].apply(determine_state)    
     change_index_list,color_list = state_change(df_hist['state'])
@@ -139,6 +139,8 @@ st.write("According to Triennial Central Bank Survey conducted by Bank for Inter
 
 st.write("**Prediction not available.")
 
+st.sidebar.title('Forex Rate Prediction')
+pred_toggle = st.sidebar.toggle("Enable Prediction",key='pred')
 
 EURUSD, GBPUSD, USDJPY = st.tabs(["EURUSD", "GBPUSD**", "USDJPY**"])
 with EURUSD:
