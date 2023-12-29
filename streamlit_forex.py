@@ -15,6 +15,9 @@ import warnings
 
 # define functions
 
+if 'pred' not in st.session_state:
+    st.session_state['pred'] = False
+
 @st.cache_data
 def plot_graph(df_hist,df_predict=pd.DataFrame(),check=st.session_state["pred"]):
     
