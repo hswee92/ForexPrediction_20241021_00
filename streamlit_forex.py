@@ -92,18 +92,18 @@ def prediction_table(df_prediction):
         df2_set2 = df2[['Date','Close']][10:20]
         df2_set3 = df2[['Date','Close']][20:30]
         
-        table.write(df2_set1.T)
+        table.dataframe(df2_set1.T,width=660)
         table.write(df2_set2.T)
         table.write(df2_set3.T)
     else:
         table.write("Prediction function turned off")
-        df2['Close NULL'] = '-'
+        df2['Close'] = '-'
 
-        df2_set1 = df2[['Date','Close NULL']][0:10]
-        df2_set2 = df2[['Date','Close NULL']][10:20]
-        df2_set3 = df2[['Date','Close NULL']][20:30]
+        df2_set1 = df2[['Date','Close']][0:10]
+        df2_set2 = df2[['Date','Close']][10:20]
+        df2_set3 = df2[['Date','Close']][20:30]
         
-        table.write(df2_set1.T)
+        table.dataframe(df2_set1.T,width=660)
         table.write(df2_set2.T)
         table.write(df2_set3.T)
 
