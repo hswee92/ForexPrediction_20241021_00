@@ -42,7 +42,7 @@ def plot_graph(df_hist,df_predict=pd.DataFrame(),color=[]):
         st.write(pred_change_index)
         pred_new_index = []
         for r in pred_change_index:
-            date_index = df_datetime['Date'][df_datetime['Date'] == df_datetime['Date'].iloc[r]].index
+            date_index = df_datetime['Date'][df_datetime['Date'] == df_predict['Date_timestamp'].iloc[r]].index
             
             graph.write('r: ' + str(r))
             graph.write(df_datetime['Date'])
