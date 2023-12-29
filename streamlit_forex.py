@@ -93,7 +93,7 @@ def prediction_table(df_prediction, check=st.session_state["pred"]):
         df2_set1 = df2[['Date','Close']][0:10]
         df2_set2 = df2[['Date','Close']][10:20]
         df2_set3 = df2[['Date','Close']][20:30]
-        table.write(st.session_state["pred"])
+        # table.write(st.session_state["pred"])
         table.dataframe(df2_set1.T,width=660)
         table.dataframe(df2_set2.T,width=660)
         table.dataframe(df2_set3.T,width=660)
@@ -104,7 +104,7 @@ def prediction_table(df_prediction, check=st.session_state["pred"]):
         df2_set1 = df2[['Date','Close']][0:10]
         df2_set2 = df2[['Date','Close']][10:20]
         df2_set3 = df2[['Date','Close']][20:30]
-        table.write(st.session_state["pred"])
+        # table.write(st.session_state["pred"])
         table.dataframe(df2_set1.T,width=660)
         table.dataframe(df2_set2.T,width=660)
         table.dataframe(df2_set3.T,width=660)
