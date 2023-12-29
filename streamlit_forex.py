@@ -108,17 +108,17 @@ def state_change(dataframe):
     color = []
     change_index.append(0)
     if dataframe.iloc[0] == True: 
-        color.append('g')
+        color.append('green')
     else:
-        color.append('r')
+        color.append('red')
 
     for p in range(1,len(dataframe)):
         if dataframe.iloc[p] != dataframe.iloc[p - 1]:
             change_index.append(p) 
             if dataframe.iloc[p] == True: 
-                color.append('g')
+                color.append('green')
             else:
-                color.append('r')
+                color.append('red')
     change_index.append(len(dataframe))
     return change_index, color
 
