@@ -41,7 +41,11 @@ def plot_graph(df_hist,df_predict=pd.DataFrame(),color=[]):
         pred_new_index = []
         for r in pred_change_index:
             date_index = df_datetime['Date'][df_datetime['Date'] == r].index
+            
+            graph.write('r: ' + r)
+            graph.write(df_datetime['Date'])
             graph.write(date_index)
+
             pred_new_index.append(date_index)
         graph.write(pred_new_index)
         change_index_list = change_index_list + pred_new_index
