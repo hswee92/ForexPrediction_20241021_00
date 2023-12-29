@@ -129,9 +129,9 @@ def state_change(dataframe):
 # --------------------------------------------------------------------------------------------------------------------
 
 placeholder = st.empty()
-placeholder.title('Forex Pair')
+placeholder.title('Forex Rate')
 
-st.write("Hello! Welcome to Forex Prediction page!")
+st.write("Hello! Welcome to Forex Rate Prediction page!")
 
 st.write("According to Triennial Central Bank Survey conducted by Bank for International Settlements (2022), "
          "US dollar is still the world's dominant currency. 88.5% of all trades in April 2022 involve **US dollar**, "
