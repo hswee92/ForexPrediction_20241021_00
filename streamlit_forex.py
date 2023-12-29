@@ -24,11 +24,11 @@ def plot_graph(df_hist,df_predict=pd.DataFrame(),color=[]):
     ymin = min(df_hist['Close'])
         
     graph = st.container(border=True)
-    plotcolor = 'black'
+    plotcolor = 'royalblue'
     fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(10,5))
     ax.plot(df_hist['Date_timestamp'],df_hist['Close'],label="Historical",color=plotcolor,linewidth=0.8)
     ax.plot([df_hist['Date_timestamp'].iloc[0], df_datetime['Date'].iloc[-1]],
-            [df_hist['Close'].iloc[0],df_hist['Close'].iloc[0]],color='black', linestyle='dotted')
+            [df_hist['Close'].iloc[0],df_hist['Close'].iloc[0]],color='black', linestyle='dotted',label='Day Open Rate')
 
     if forex_pair[0:6] == "EURUSD":
         df_predict = pd.concat([df_hist.iloc[-2:], df_predict]).reset_index(drop=True)
@@ -42,9 +42,7 @@ def plot_graph(df_hist,df_predict=pd.DataFrame(),color=[]):
         pred_new_index = []
         for r in pred_change_index:
             date_index = df_datetime['Date'][df_datetime['Date'] == df_predict['Date_timestamp'].iloc[r]].index.values[0]
-            graph.write(date_index)
             pred_new_index.append(date_index)
-        graph.write(list(pred_new_index))
         change_index_list = change_index_list + pred_new_index
         color_list = color_list + pred_color
         ymax_temp = max(df_predict['Close'])
@@ -52,12 +50,8 @@ def plot_graph(df_hist,df_predict=pd.DataFrame(),color=[]):
         if ymax_temp > ymax: ymax = ymax_temp
         if ymin_temp < ymin: ymin = ymin_temp
 
-
-
     y_max = ymax + ymax*0.0005
     y_min = ymin - ymin*0.0005
-
-
 
     #draw box
     for q in range(len(change_index_list)-1):
