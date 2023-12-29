@@ -51,9 +51,10 @@ def plot_graph(df_hist,df_predict=pd.DataFrame(),color=[]):
 
     #draw box
     graph.write(color_list)
+    graph.write(change_index_list)
     for q in range(len(change_index_list)-1):
-        x_min = df_datetime['Date'].iloc[q]
-        x_max = df_datetime['Date'].iloc[q+1]
+        x_min = df_datetime['Date'].iloc[change_index_list[q]]
+        x_max = df_datetime['Date'].iloc[change_index_list[q+1]]
         graph_color = color_list[q] 
 
         graph.write(str(q) + ',' + graph_color)
