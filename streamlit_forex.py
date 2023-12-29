@@ -36,10 +36,13 @@ def plot_graph(df_hist,df_predict=pd.DataFrame(),color=[]):
 
         df_predict['daychange'] = df_predict['Close'] - df_hist['Close'].iloc[0]
         df_predict['state'] = df_predict['daychange'].apply(determine_state)    
-        # pred_change_index,pred_color = state_change(df_predict['state'])
-        # del pred_change_index[0] # remove first index so that no overlap
-        # change_index_list = change_index_list + pred_change_index
-        # color_list = color_list + pred_color
+        pred_change_index,pred_color = state_change(df_predict['state'])
+        del pred_change_index[0] # remove first index so that no overlap
+        pred_new_index = []
+        for r in pred_change_index:
+            date_index = df_datetime['Date'][df_datetime['Date'] == r].index
+        change_index_list = change_index_list + pred_change_index
+        color_list = color_list + pred_color
         ymax_temp = max(df_predict['Close'])
         ymin_temp = min(df_predict['Close'])
         if ymax_temp > ymax: ymax = ymax_temp
