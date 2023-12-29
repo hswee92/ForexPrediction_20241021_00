@@ -17,14 +17,11 @@ import warnings
 
 @st.cache_data
 def plot_graph(df_hist,df_predict=pd.DataFrame()):
-        
-
-    # get day change
-    # get boolean of positive or negative
-    # get change indices
     
     df_hist['state'] = df_hist['daychange'].apply(determine_state)    
-    hist_change_index = state_change(df_hist['state'])
+    change_index_list = state_change(df_hist['state'])
+    ymax = max(df_hist['Close'])
+    ymin = min(df_hist['Close'])
         
     graph = st.container(border=True)
     
@@ -36,6 +33,34 @@ def plot_graph(df_hist,df_predict=pd.DataFrame()):
     if forex_pair[0:6] == "EURUSD":
         df_predict = pd.concat([df_hist.iloc[-2:], df_predict]).reset_index(drop=True)
         ax.plot(df_predict['Date_timestamp'],df_predict['Close'],label="Prediction",color='red',linewidth=2.5)
+
+        df_predict['daychange'] = df_predict['Close'] - df_hist['Close'].iloc[0]
+        df_predict['state'] = df_predict['daychange'].apply(determine_state)    
+        pred_change_index = state_change(df_predict['state'])
+        del pred_change_index[0] # remove first index so that no overlap
+        change_index_list.append(pred_change_index)
+        ymax_temp = max(predict['Close'])
+        ymin_temp = min(predict['Close'])
+        if ymax_temp > ymax: ymax = ymax_temp
+        if ymin_temp > ymin: ymin = ymin_temp
+
+
+    y_max = ymax + ymax*0.01
+    y_min = ymin + ymin*0.01
+    graph.write(y_max)
+    graph.write(y_min)
+
+    #draw box
+    for q in range(len(change_index_list)-1):
+        x_min = df_datetime['Date'].iloc[q]
+        x_max = df_datetime['Date'].iloc[q+1]
+        graph_color = color[q] 
+        x_box = [x_min, x_min, x_max, x_max] 
+        y_box = [y_min,y_max,y_max,y_min]
+
+        # plt.plot(x_box, y_box , 'red', linewidth=1.5)
+        plt.fill(x_box, y_box,color=graph_color, alpha=0.2)
+
 
     ax.set(xlabel='EET Time')  
     ax.set(ylabel='Exchange Rate') 
@@ -80,14 +105,24 @@ def determine_state(col):
     
 def state_change(dataframe):
     change_index = []
+    color = []
     change_index.append(0)
+    if dataframe.iloc[0] == True: 
+        color.append('g')
+    else:
+        color.append('r')
+
     for p in range(1,len(dataframe)):
         if dataframe.iloc[p] != dataframe.iloc[p - 1]:
             change_index.append(p) 
+            if dataframe.iloc[p] == True: 
+                color.append('g')
+            else:
+                color.append('r')
     change_index.append(len(dataframe))
     return change_index
 
-# -------------------------------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------------------------------------
 
 placeholder = st.empty()
 placeholder.title('Forex Pair')
