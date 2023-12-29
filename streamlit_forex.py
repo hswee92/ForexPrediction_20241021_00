@@ -26,7 +26,7 @@ def plot_graph(df_hist,df_predict=pd.DataFrame(),color=[]):
     graph = st.container(border=True)
     plotcolor = 'black'
     fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(10,6))
-    ax.plot(df_hist['Date_timestamp'],df_hist['Close'],label="Historical",color=plotcolor,linewidth=0.5) # marker='x' marker='.'
+    ax.plot(df_hist['Date_timestamp'],df_hist['Close'],label="Historical",color=plotcolor,linewidth=0.8)
     ax.plot([df_hist['Date_timestamp'].iloc[0], df_datetime['Date'].iloc[-1]],
             [df_hist['Close'].iloc[0],df_hist['Close'].iloc[0]],color='black', linestyle='dotted')
 
@@ -47,8 +47,8 @@ def plot_graph(df_hist,df_predict=pd.DataFrame(),color=[]):
 
 
 
-    y_max = ymax + ymax*0.002
-    y_min = ymin - ymin*0.002
+    y_max = ymax + ymax*0.0005
+    y_min = ymin - ymin*0.0005
 
 
 
