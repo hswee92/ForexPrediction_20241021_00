@@ -81,18 +81,32 @@ def plot_graph(df_hist,df_predict=pd.DataFrame()):
 def prediction_table(df_prediction):
     table = st.container(border=True)
     table.title("Prediction")
-    table.write("This is the trend prediction for the next 30 minutes.")
 
     df2 = df_prediction
     df2['Date'] = df2['Date'].str.slice(11,16)
     df2['Close'] = df2['Close'].round(5)
-    df2_set1 = df2[['Date','Close']][0:10]
-    df2_set2 = df2[['Date','Close']][10:20]
-    df2_set3 = df2[['Date','Close']][20:30]
-    
-    table.write(df2_set1.T)
-    table.write(df2_set2.T)
-    table.write(df2_set3.T)
+
+    if pred_toggle:
+        table.write("This is the trend prediction for the next 30 minutes.")
+        df2_set1 = df2[['Date','Close']][0:10]
+        df2_set2 = df2[['Date','Close']][10:20]
+        df2_set3 = df2[['Date','Close']][20:30]
+        
+        table.write(df2_set1.T)
+        table.write(df2_set2.T)
+        table.write(df2_set3.T)
+    else:
+        table.write("Prediction function turned off")
+        df2['null'] = '-'
+
+        df2_set1 = df2[['Date','null']][0:10]
+        df2_set2 = df2[['Date','null']][10:20]
+        df2_set3 = df2[['Date','null']][20:30]
+        
+        table.write(df2_set1.T)
+        table.write(df2_set2.T)
+        table.write(df2_set3.T)
+
 
 
          
@@ -167,14 +181,12 @@ with EURUSD:
         df_pred = pd.read_csv(pred_file, delimiter=',', index_col=False)
         df_pred['Date_timestamp'] = pd.to_datetime(df_pred['Date'])
 
-        plot_graph(df,df_pred)
-        prediction_table(df_pred)
+        plot_graph(df,df_pred)      
     else:
-        st.empty()
         plot_graph(df)
-        box = st.container(border=True)
-        box.title("Prediction")
-        box.write("Prediction function turned off")
+
+    prediction_table(df_pred)
+
     
 
 
