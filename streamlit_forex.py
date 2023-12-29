@@ -43,11 +43,12 @@ def plot_graph(df_hist,df_predict=pd.DataFrame(),color=[]):
         ymax_temp = max(df_predict['Close'])
         ymin_temp = min(df_predict['Close'])
         if ymax_temp > ymax: ymax = ymax_temp
-        if ymin_temp > ymin: ymin = ymin_temp
+        if ymin_temp < ymin: ymin = ymin_temp
+        
 
 
     y_max = ymax + ymax*0.01
-    y_min = ymin + ymin*0.01
+    y_min = ymin - ymin*0.01
 
     #draw box
     graph.write(color_list)
@@ -61,7 +62,7 @@ def plot_graph(df_hist,df_predict=pd.DataFrame(),color=[]):
         x_box = [x_min, x_min, x_max, x_max] 
         y_box = [y_min,y_max,y_max,y_min]
 
-        plt.plot(x_box, y_box , 'red', linewidth=1.5)
+        # plt.plot(x_box, y_box , 'red', linewidth=1.5)
         plt.fill(x_box, y_box,color=graph_color, alpha=0.2)
 
 
