@@ -38,7 +38,8 @@ def plot_graph(df_hist,df_predict=pd.DataFrame(),color=[]):
         df_predict['state'] = df_predict['daychange'].apply(determine_state)    
         pred_change_index,pred_color = state_change(df_predict['state'])
         del pred_change_index[0] # remove first index so that no overlap
-        st.write('pred_change_index:' + pred_change_index)
+        st.write('pred_change_index:')
+        st.write(pred_change_index)
         pred_new_index = []
         for r in pred_change_index:
             date_index = df_datetime['Date'][df_datetime['Date'] == df_datetime['Date'].iloc[r]].index
