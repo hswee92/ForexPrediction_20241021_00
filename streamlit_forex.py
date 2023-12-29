@@ -88,7 +88,8 @@ def prediction_table(df_prediction):
     df2_set1 = df2[['Date','Close']][0:10]
     df2_set2 = df2[['Date','Close']][10:20]
     df2_set3 = df2[['Date','Close']][20:30]
-
+    
+    table.title("Prediction")
     table.write(df2_set1.T)
     table.write(df2_set2.T)
     table.write(df2_set3.T)
@@ -171,6 +172,9 @@ with EURUSD:
     else:
         st.empty()
         plot_graph(df)
+        box = st.container(border=True)
+        box.title("Prediction")
+        box.write("Prediction function turned off")
     
 
 
