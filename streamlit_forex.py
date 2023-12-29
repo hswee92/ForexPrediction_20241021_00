@@ -41,7 +41,7 @@ def plot_graph(df_hist,df_predict=pd.DataFrame(),color=[]):
         st.write('pred_change_index:')
         st.write(pred_change_index)
         graph.write(df_predict['Date_timestamp'].shape)
-        
+
         pred_new_index = []
         for r in pred_change_index:
             date_index = df_datetime['Date'][df_datetime['Date'] == df_predict['Date_timestamp'].iloc[r]].index
@@ -136,7 +136,7 @@ def state_change(dataframe):
                 color.append('green')
             else:
                 color.append('red')
-    change_index.append(len(dataframe))
+    change_index.append(len(dataframe)-1)
     return change_index, color
 
 # --------------------------------------------------------------------------------------------------------------------
