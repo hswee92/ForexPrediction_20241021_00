@@ -39,8 +39,8 @@ def plot_graph(df_hist,df_predict=pd.DataFrame()):
         pred_change_index = state_change(df_predict['state'])
         del pred_change_index[0] # remove first index so that no overlap
         change_index_list.append(pred_change_index)
-        ymax_temp = max(predict['Close'])
-        ymin_temp = min(predict['Close'])
+        ymax_temp = max(df_predict['Close'])
+        ymin_temp = min(df_predict['Close'])
         if ymax_temp > ymax: ymax = ymax_temp
         if ymin_temp > ymin: ymin = ymin_temp
 
