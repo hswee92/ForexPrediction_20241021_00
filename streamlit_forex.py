@@ -168,8 +168,8 @@ with EURUSD:
 
         plot_graph(df,df_pred)
         prediction_table(df_pred)
-    
     else:
+        st.empty()
         plot_graph(df)
     
 
