@@ -77,7 +77,7 @@ def plot_graph(df_hist,df_predict=pd.DataFrame()):
 
 
 
-@st.cache_data
+# @st.cache_data
 def prediction_table(df_prediction):
     table = st.container(border=True)
     table.title("Prediction")
