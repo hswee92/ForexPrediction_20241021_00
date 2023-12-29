@@ -48,14 +48,13 @@ def plot_graph(df_hist,df_predict=pd.DataFrame(),color=[]):
 
     y_max = ymax + ymax*0.01
     y_min = ymin + ymin*0.01
-    graph.write(y_max)
-    graph.write(y_min)
 
     #draw box
     for q in range(len(change_index_list)-1):
         x_min = df_datetime['Date'].iloc[q]
         x_max = df_datetime['Date'].iloc[q+1]
         graph_color = color_list[q] 
+        graph.write(graph_color)
         x_box = [x_min, x_min, x_max, x_max] 
         y_box = [y_min,y_max,y_max,y_min]
 
