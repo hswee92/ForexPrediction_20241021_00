@@ -40,9 +40,9 @@ def plot_graph(df_hist,df_predict=pd.DataFrame(),color=[]):
         del pred_change_index[0] # remove first index so that no overlap
         pred_new_index = []
         for r in pred_change_index:
-            date_index = df_datetime['Date'][df_datetime['Date'] == r].index
+            date_index = df_datetime['Date'][df_datetime['Date'] == df_predict['Date_timestamp'].iloc[r]].index
             
-            graph.write('r: ' + r)
+            graph.write('r: ' + str(r))
             graph.write(df_datetime['Date'])
             graph.write(date_index)
 
