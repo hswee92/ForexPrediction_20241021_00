@@ -50,7 +50,7 @@ def plot_graph(df_hist,df_predict=pd.DataFrame(),color=[]):
     y_min = ymin + ymin*0.01
 
     #draw box
-    graph.write(len(color_list))
+    graph.write(color_list)
     for q in range(len(change_index_list)-1):
         x_min = df_datetime['Date'].iloc[q]
         x_max = df_datetime['Date'].iloc[q+1]
