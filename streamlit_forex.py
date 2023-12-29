@@ -24,7 +24,7 @@ def plot_graph(df_hist,df_predict=pd.DataFrame(),color=[]):
     ymin = min(df_hist['Close'])
         
     graph = st.container(border=True)
-    plotcolor = 'black'
+    plotcolor = 'grey'
     fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(10,6))
     ax.plot(df_hist['Date_timestamp'],df_hist['Close'],label="Historical",color=plotcolor) # marker='x' marker='.'
     ax.plot([df_hist['Date_timestamp'].iloc[0], df_datetime['Date'].iloc[-1]],
