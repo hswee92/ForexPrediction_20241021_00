@@ -115,7 +115,7 @@ def prediction_table(df_prediction, check=st.session_state["pred"]):
 @st.cache_data
 def datetime_list(str_date):
     df_fulldate = pd.DataFrame()
-    df_fulldate['Date'] = pd.date_range(str_date, periods=1440, freq="T")
+    df_fulldate['Date'] = pd.date_range(str_date, periods=288, freq="T")
     return df_fulldate
 
 def determine_state(col):
