@@ -193,7 +193,7 @@ with EURUSD:
         prediction_table(df_pred)
 
 
- with USDJPY:
+with USDJPY:
     forex_pair = "USDJPY"
 
     # plotcolor = 'forestgreen'
