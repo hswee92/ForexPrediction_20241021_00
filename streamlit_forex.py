@@ -161,7 +161,7 @@ st.write("**Prediction not available.")
 st.sidebar.title('Forex Rate Prediction')
 pred_toggle = st.sidebar.toggle("Enable Prediction",key='pred')
 
-EURUSD, GBPUSD, USDJPY = st.tabs(["EURUSD", "GBPUSD**", "USDJPY**"])
+EURUSD, USDJPY, GBPUSD = st.tabs(["EURUSD", "USDJPY**", "GBPUSD**"])
 with EURUSD:
     forex_pair = "EURUSD"    
     
@@ -192,12 +192,27 @@ with EURUSD:
         plot_graph(df)
         prediction_table(df_pred)
 
-    
+
+ with USDJPY:
+    forex_pair = "USDJPY"
+
+    # plotcolor = 'forestgreen'
+    hist_file = forex_pair[0:6] + "_historical.txt"
+    df = pd.read_csv(hist_file, delimiter=',', index_col=False)
+    df['Date_timestamp'] = pd.to_datetime(df['Date'])
+
+    # Prepare for plot
+    str_datetime = df['Date'].iloc[0]
+    str_date = str_datetime[0:10]
+
+    df_datetime = datetime_list(str_date)
+
+    st.write("USDJPY pair is the **SECOND** most traded currency pair. \n"
+             "In April 2022, USDJPY makes up 13.2% of total trades.")
+    st.write("This is the today's graph (" + str_date + ") for " + forex_pair[0:6] + ".")
+    plot_graph(df)   
 
     
-
-
-
 with GBPUSD:
     forex_pair = "GBPUSD"
 
@@ -216,27 +231,6 @@ with GBPUSD:
              "In April 2022, GBPUSD makes up 9.6% of total trades.")
     st.write("This is the today's graph (" + str_date + ") for " + forex_pair[0:6] + ".")
     plot_graph(df)
-
-
-with USDJPY:
-    forex_pair = "USDJPY"
-
-    # plotcolor = 'forestgreen'
-    hist_file = forex_pair[0:6] + "_historical.txt"
-    df = pd.read_csv(hist_file, delimiter=',', index_col=False)
-    df['Date_timestamp'] = pd.to_datetime(df['Date'])
-
-    # Prepare for plot
-    str_datetime = df['Date'].iloc[0]
-    str_date = str_datetime[0:10]
-
-    df_datetime = datetime_list(str_date)
-
-    st.write("USDJPY pair is the **SECOND** most traded currency pair. \n"
-             "In April 2022, USDJPY makes up 13.2% of total trades.")
-    st.write("This is the today's graph (" + str_date + ") for " + forex_pair[0:6] + ".")
-    plot_graph(df)
-
 
 
 # container for information below
