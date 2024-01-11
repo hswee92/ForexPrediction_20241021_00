@@ -77,17 +77,16 @@ def plot_graph(df_hist,df_predict=pd.DataFrame(),check=st.session_state["pred"])
     ax.legend()
     graph.pyplot(fig)
 
+    last_done_price = df_hist['Close'].iloc[-1]
+    last_done_text = "Previous minute's close rate is " + "**" + str(last_done_price) + "**." 
+    graph.write(last_done_text)
 
 
 # @st.cache_data
-def prediction_table(df_historical, df_prediction, check=st.session_state["pred"]):
+def prediction_table(df_prediction, check=st.session_state["pred"]):
     table = st.container(border=True)
     table.title("Prediction")
-
-    last_done_price = df_historical['Close'].iloc[-1]
-    last_done_text = "Previous minute's close rate is " + "**" + str(last_done_price) + "**"
-    table.write(last_done_text)
-
+  
     df2 = df_prediction
     df2['Date'] = df2['Date'].str.slice(11,16)
     df2['Close'] = df2['Close'].round(5)
@@ -204,10 +203,10 @@ with EURUSD:
 
     if pred_toggle: 
         plot_graph(df,df_pred)      
-        prediction_table(df, df_pred)
+        prediction_table(df_pred)
     else:
         plot_graph(df)
-        prediction_table(df, df_pred)
+        prediction_table(df_pred)
 
 
 with USDJPY:
