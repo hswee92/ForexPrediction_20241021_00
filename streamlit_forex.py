@@ -85,7 +85,7 @@ def prediction_table(df_historical, df_prediction, check=st.session_state["pred"
     table.title("Prediction")
 
     last_done_price = df_historical['Close'].iloc[-1]
-    last_done_text = "Previous minute's close rate is " + "**" + last_done_price + "**"
+    last_done_text = "Previous minute's close rate is " + "**" + str(last_done_price) + "**"
     table.write()
 
     df2 = df_prediction
