@@ -89,7 +89,7 @@ def prediction_table(df_prediction, check=st.session_state["pred"]):
     df2['Close'] = df2['Close'].round(5)
 
     if pred_toggle:
-        table.write("This is the trend prediction for the next 30 minutes.")
+        table.write("This is the trend prediction for the next 60 minutes.")
         df2_set1 = df2[['Date','Close']][0:10]
         df2_set2 = df2[['Date','Close']][10:20]
         df2_set3 = df2[['Date','Close']][20:30]
@@ -104,10 +104,17 @@ def prediction_table(df_prediction, check=st.session_state["pred"]):
         df2_set1 = df2[['Date','Close']][0:10]
         df2_set2 = df2[['Date','Close']][10:20]
         df2_set3 = df2[['Date','Close']][20:30]
+        df2_set4 = df2[['Date','Close']][30:40]
+        df2_set5 = df2[['Date','Close']][40:50]
+        df2_set6 = df2[['Date','Close']][50:60]
+
         # table.write(st.session_state["pred"])
         table.dataframe(df2_set1.T,width=660)
         table.dataframe(df2_set2.T,width=660)
         table.dataframe(df2_set3.T,width=660)
+        table.dataframe(df2_set4.T,width=660)
+        table.dataframe(df2_set5.T,width=660)
+        table.dataframe(df2_set6.T,width=660)
 
 
 
@@ -256,7 +263,4 @@ container.write("**:red[Disclaimer: Trading involves risk. \n"
 
 time.sleep(5)
 st.rerun()
-
-
-
 
