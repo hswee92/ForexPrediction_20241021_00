@@ -93,10 +93,16 @@ def prediction_table(df_prediction, check=st.session_state["pred"]):
         df2_set1 = df2[['Date','Close']][0:10]
         df2_set2 = df2[['Date','Close']][10:20]
         df2_set3 = df2[['Date','Close']][20:30]
+        df2_set4 = df2[['Date','Close']][30:40]
+        df2_set5 = df2[['Date','Close']][40:50]
+        df2_set6 = df2[['Date','Close']][50:60]
         # table.write(st.session_state["pred"])
         table.dataframe(df2_set1.T,width=660)
         table.dataframe(df2_set2.T,width=660)
         table.dataframe(df2_set3.T,width=660)
+        table.dataframe(df2_set4.T,width=660)
+        table.dataframe(df2_set5.T,width=660)
+        table.dataframe(df2_set6.T,width=660)
     else:
         table.write("Prediction function turned off")
         df2['Close'] = '-'
