@@ -35,7 +35,7 @@ def plot_graph(df_hist,df_predict_ori=pd.DataFrame(),check=st.session_state["pre
 
     if forex_pair[0:6] == "EURUSD" and pred_toggle:
         df_predict = pd.concat([df_hist.iloc[-2:], df_predict_ori]).reset_index(drop=True)
-        df_predict_plot = pd.concat([df_hist.iloc[-2:], df_predict_ori.iloc[-1]]).reset_index(drop=True)
+        df_predict_plot = pd.concat([df_hist.iloc[-2:], df_predict_ori.iloc[-2:]]).reset_index(drop=True)
         ax.plot(df_predict_plot['Date_timestamp'],df_predict_plot['Close'],label="Prediction",color='red',linewidth=2.5)
 
         st.dataframe(df_predict_plot.T,width=660)
