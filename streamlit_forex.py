@@ -38,6 +38,8 @@ def plot_graph(df_hist,df_predict_ori=pd.DataFrame(),check=st.session_state["pre
         df_predict_plot = pd.concat([df_hist.iloc[-2:], df_predict_ori.iloc[-1]]).reset_index(drop=True)
         ax.plot(df_predict_plot['Date_timestamp'],df_predict_plot['Close'],label="Prediction",color='red',linewidth=2.5)
 
+        st.dataframe(df_predict_plot.T,width=660)
+
         df_predict['daychange'] = df_predict['Close'] - df_hist['Close'].iloc[0]
         df_predict['state'] = df_predict['daychange'].apply(determine_state)    
         pred_change_index,pred_color = state_change(df_predict['state'])
