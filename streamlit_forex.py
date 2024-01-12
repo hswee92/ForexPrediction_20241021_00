@@ -34,7 +34,8 @@ def plot_graph(df_hist,df_predict=pd.DataFrame(),check=st.session_state["pred"])
             [df_hist['Close'].iloc[0],df_hist['Close'].iloc[0]],color='black', linestyle='dotted',label='Day Open Rate')
 
     if forex_pair[0:6] == "EURUSD" and pred_toggle:
-        df_predict = pd.concat([df_hist.iloc[-2:], df_predict]).reset_index(drop=True)
+        # df_predict = pd.concat([df_hist.iloc[-2:], df_predict]).reset_index(drop=True)
+        df_predict = pd.concat([df_hist.iloc[-2:], df_predict[-1]]).reset_index(drop=True)
         ax.plot(df_predict['Date_timestamp'],df_predict['Close'],label="Prediction",color='red',linewidth=2.5)
 
         df_predict['daychange'] = df_predict['Close'] - df_hist['Close'].iloc[0]
@@ -203,10 +204,10 @@ with EURUSD:
 
     if pred_toggle: 
         plot_graph(df,df_pred)      
-        prediction_table(df_pred)
+        # prediction_table(df_pred)
     else:
         plot_graph(df)
-        prediction_table(df_pred)
+        # prediction_table(df_pred)
 
 
 with USDJPY:
