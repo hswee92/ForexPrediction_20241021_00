@@ -19,7 +19,7 @@ if 'pred' not in st.session_state:
     st.session_state['pred'] = False
 
 @st.cache_data
-def plot_graph(df_hist,df_predict=pd.DataFrame(),check=st.session_state["pred"]):
+def plot_graph(df_hist,df_predict_ori=pd.DataFrame(),check=st.session_state["pred"]):
     
     df_hist['state'] = df_hist['daychange'].apply(determine_state)    
     change_index_list,color_list = state_change(df_hist['state'])
@@ -34,8 +34,8 @@ def plot_graph(df_hist,df_predict=pd.DataFrame(),check=st.session_state["pred"])
             [df_hist['Close'].iloc[0],df_hist['Close'].iloc[0]],color='black', linestyle='dotted',label='Day Open Rate')
 
     if forex_pair[0:6] == "EURUSD" and pred_toggle:
-        df_predict = pd.concat([df_hist.iloc[-2:], df_predict]).reset_index(drop=True)
-        df_predict_plot = pd.concat([df_hist.iloc[-2:], df_predict.iloc[-1]]).reset_index(drop=True)
+        df_predict = pd.concat([df_hist.iloc[-2:], df_predict_ori]).reset_index(drop=True)
+        df_predict_plot = pd.concat([df_hist.iloc[-2:], df_predict_ori.iloc[-1]]).reset_index(drop=True)
         ax.plot(df_predict_plot['Date_timestamp'],df_predict_plot['Close'],label="Prediction",color='red',linewidth=2.5)
 
         df_predict['daychange'] = df_predict['Close'] - df_hist['Close'].iloc[0]
