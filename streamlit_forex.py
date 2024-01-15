@@ -177,7 +177,7 @@ col2.video('https://www.youtube.com/watch?v=Bj7j3iD8bow')
 col2.video('https://www.youtube.com/watch?v=KVBuUYXsSRM') 
 
 
-col1.title('Forex Rate')
+col1.title('Forex Rate Prediction')
 col1.write("Hello! Welcome to Forex Rate Prediction page!")
 
 col1.write("According to Triennial Central Bank Survey conducted by Bank for International Settlements (2022), "
