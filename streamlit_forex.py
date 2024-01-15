@@ -168,8 +168,14 @@ def state_change(dataframe):
 st.set_page_config(layout="wide")
 
 col1, col2 = st.columns([4,2])
-col1.title('Forex Rate')
+col2.title('Forex Learning Materials')
+# forex market
+st.video('https://www.youtube.com/watch?v=ig_EO805rpA') 
+# mitigate risk forex
+st.video('https://www.youtube.com/watch?v=Bj7j3iD8bow') 
 
+
+col1.title('Forex Rate')
 col1.write("Hello! Welcome to Forex Rate Prediction page!")
 
 col1.write("According to Triennial Central Bank Survey conducted by Bank for International Settlements (2022), "
