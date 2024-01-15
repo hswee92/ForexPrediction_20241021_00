@@ -190,7 +190,7 @@ st.sidebar.markdown(
     """<a href="https://www.github.com/hswee92/ForexPrediction/">
     <img src="data:image/png;base64,{}" width="100">
     </a>""".format(
-        base64.b64encode(open("GitHub Logo.png", "rb").read()).decode()
+        base64.b64encode(open("GitHub logo.png", "rb").read()).decode()
     ),
     unsafe_allow_html=True,
 )
