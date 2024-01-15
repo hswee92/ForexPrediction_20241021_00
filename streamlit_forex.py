@@ -167,7 +167,7 @@ def state_change(dataframe):
 
 st.set_page_config(layout="wide")
 
-col1, col2 = st.columns([3, 1])
+col1, col2 = st.columns([4,2])
 col1.title('Forex Rate')
 
 col1.write("Hello! Welcome to Forex Rate Prediction page!")
