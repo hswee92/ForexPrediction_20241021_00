@@ -170,9 +170,9 @@ st.set_page_config(layout="wide")
 col1, col2 = st.columns([4,2])
 col2.title('Forex Learning Materials')
 # forex market
-st.video('https://www.youtube.com/watch?v=ig_EO805rpA') 
+col2.video('https://www.youtube.com/watch?v=ig_EO805rpA') 
 # mitigate risk forex
-st.video('https://www.youtube.com/watch?v=Bj7j3iD8bow') 
+col2.video('https://www.youtube.com/watch?v=Bj7j3iD8bow') 
 
 
 col1.title('Forex Rate')
