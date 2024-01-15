@@ -186,7 +186,7 @@ st.sidebar.write("Creator: Wee Hin Sheik")
 st.sidebar.write("Email: hswee92@gmail.com")
 st.sidebar.markdown( 
     """<a href="https://www.linkedin.com/in/hin-sheik-wee-9855704b/">
-    <img src="data:image/png;base64,{}" width="25">
+    <img src="data:image/png;base64,{}" width="50">
     </a>""".format(
         base64.b64encode(open("Linkedin-Logo.png", "rb").read()).decode()
     ),
