@@ -167,7 +167,7 @@ def state_change(dataframe):
 
 st.set_page_config(layout="wide")
 
-col1, col2 = st.columns([4,2])
+col1, col2 = st.columns([4,2], gap="medium")
 col2.title('Learning Materials')
 # forex market
 col2.video('https://www.youtube.com/watch?v=ig_EO805rpA') 
