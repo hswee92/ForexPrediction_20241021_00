@@ -179,6 +179,22 @@ st.write("**Prediction not available.")
 
 st.sidebar.title('Forex Rate Prediction')
 pred_toggle = st.sidebar.toggle("Enable Prediction",key='pred')
+st.sidebar.write()
+st.sidebar.write()
+st.sidebar.write()
+st.sidebar.write()
+st.sidebar.write()
+st.sidebar.write("Creator: Wee Hin Sheik")
+st.sidebar.write("Email: hswee92@gmail.com")
+st.sidebar.write( 
+    """<a href="https://www.linkedin.com/in/hin-sheik-wee-9855704b/">
+    <img src="data:image/png;base64,{}" width="25">
+    </a>""".format(
+        base64.b64encode(open("Linkedin-Logo.png", "rb").read()).decode()
+    ),
+    unsafe_allow_html=True,
+)
+
 
 EURUSD, USDJPY, GBPUSD = st.tabs(["EURUSD", "USDJPY**", "GBPUSD**"])
 with EURUSD:
