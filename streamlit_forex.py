@@ -167,16 +167,16 @@ def state_change(dataframe):
 
 st.set_page_config(layout="wide")
 
-placeholder = st.empty()
-placeholder.title('Forex Rate')
+col1, col2 = st.columns([3, 1])
+col1.title('Forex Rate')
 
-st.write("Hello! Welcome to Forex Rate Prediction page!")
+col1.write("Hello! Welcome to Forex Rate Prediction page!")
 
-st.write("According to Triennial Central Bank Survey conducted by Bank for International Settlements (2022), "
+col1.write("According to Triennial Central Bank Survey conducted by Bank for International Settlements (2022), "
          "US dollar is still the world's dominant currency. 88.5% of all trades in April 2022 involve **US dollar**, "
          "followed by **Euro** (30.5%), **Japanese Yen** (16.7%) and **Great Britain Pound** (12.9%).")
 
-st.write("**Prediction not available.")
+col1.write("**Prediction not available.")
 
 st.sidebar.title('Forex Rate Prediction')
 pred_toggle = st.sidebar.toggle("Enable Prediction",key='pred')
@@ -206,10 +206,7 @@ st.sidebar.markdown(
 
 
 
-
-
-
-EURUSD, USDJPY, GBPUSD = st.tabs(["EURUSD", "USDJPY**", "GBPUSD**"])
+EURUSD, USDJPY, GBPUSD = col1.tabs(["EURUSD", "USDJPY**", "GBPUSD**"])
 with EURUSD:
     forex_pair = "EURUSD"    
     
@@ -282,7 +279,7 @@ with GBPUSD:
 
 
 # container for information below
-container = st.container(border=True)
+container = col1.container(border=True)
 
 MT4_timezone = pytz.timezone('EET') 
 MT4_now = datetime.now(MT4_timezone)
