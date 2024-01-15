@@ -180,7 +180,7 @@ st.write("**Prediction not available.")
 
 st.sidebar.title('Forex Rate Prediction')
 pred_toggle = st.sidebar.toggle("Enable Prediction",key='pred')
-for space in range(20):
+for space in range(18):
     st.sidebar.write(" ")
 
 st.sidebar.write("Creator: Wee Hin Sheik")
