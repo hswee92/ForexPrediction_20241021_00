@@ -188,9 +188,7 @@ st.sidebar.image("Linkedin-Logo.png")
 st.sidebar.markdown( 
     """<a href="https://www.linkedin.com/in/hin-sheik-wee-9855704b/">
     <img src="data:image/png;base64,{}" width="50">
-    </a>""".format(
-        base64.b64encode(open("Linkedin-Logo.png", "rb").read()).decode()
-    ),
+    </a>""".format(base64.b64encode(open("Linkedin-Logo.png", "rb").read()).decode()),
     unsafe_allow_html=True,
 )
 
