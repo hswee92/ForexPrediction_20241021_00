@@ -186,25 +186,14 @@ for space in range(20):
 st.sidebar.write("Creator: Wee Hin Sheik")
 st.sidebar.write("Email: hswee92@gmail.com")
 st.sidebar.write("Linkedin")
-st.sidebar.image("Linkedin-Logo.png")
 st.sidebar.markdown( 
     """<a href="https://www.linkedin.com/in/hin-sheik-wee-9855704b/">
-    <img src="data:image/png;base64,{}" width="20">
+    <img src="data:image/png;base64,{}" width="100">
     </a>""".format(
         base64.b64encode(open("Linkedin-Logo.png", "rb").read()).decode()
     ),
     unsafe_allow_html=True,
 )
-
-# st.sidebar.markdown(
-#     """<a href="https://www.linkedin.com/in/your-profile-username/">
-#     <img src="data:image/png;base64,{}" width="25">
-#     </a>""".format(
-#         base64.b64encode(open("LinkedIn.png", "rb").read()).decode()
-#     ),
-#     unsafe_allow_html=True,
-# )
-
 
 
 EURUSD, USDJPY, GBPUSD = st.tabs(["EURUSD", "USDJPY**", "GBPUSD**"])
