@@ -188,7 +188,7 @@ st.sidebar.write("Email: hswee92@gmail.com")
 
 st.sidebar.markdown( 
     """<a href="https://www.github.com/hswee92/ForexPrediction/">
-    <img src="data:image/png;base64,{}" width="200">
+    <img src="data:image/png;base64,{}" width="150">
     </a>""".format(
         base64.b64encode(open("GitHub logo.png", "rb").read()).decode()
     ),
@@ -197,7 +197,7 @@ st.sidebar.markdown(
 
 st.sidebar.markdown( 
     """<a href="https://www.linkedin.com/in/hin-sheik-wee-9855704b/">
-    <img src="data:image/png;base64,{}" width="200">
+    <img src="data:image/png;base64,{}" width="150">
     </a>""".format(
         base64.b64encode(open("Linkedin-Logo.png", "rb").read()).decode()
     ),
