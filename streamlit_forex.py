@@ -164,6 +164,8 @@ def state_change(dataframe):
 
 # --------------------------------------------------------------------------------------------------------------------
 
+st.set_page_config(layout="wide")
+
 placeholder = st.empty()
 placeholder.title('Forex Rate')
 
