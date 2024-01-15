@@ -7,6 +7,7 @@ import matplotlib.dates as mdates
 from datetime import datetime
 from github import Github
 import pytz
+import base64
 
 import time
 import warnings
@@ -179,7 +180,7 @@ st.write("**Prediction not available.")
 
 st.sidebar.title('Forex Rate Prediction')
 pred_toggle = st.sidebar.toggle("Enable Prediction",key='pred')
-for space in range(25):
+for space in range(20):
     st.sidebar.write(" ")
 
 st.sidebar.write("Creator: Wee Hin Sheik")
@@ -188,7 +189,7 @@ st.sidebar.write("Linkedin")
 st.sidebar.image("Linkedin-Logo.png")
 st.sidebar.markdown( 
     """<a href="https://www.linkedin.com/in/hin-sheik-wee-9855704b/">
-    <img src="data:image/png;base64,{}" width="50">
+    <img src="data:image/png;base64,{}" width="20">
     </a>""".format(
         base64.b64encode(open("Linkedin-Logo.png", "rb").read()).decode()
     ),
