@@ -79,14 +79,13 @@ def plot_graph(df_hist,df_predict_ori=pd.DataFrame(),check=st.session_state["pre
     ax.legend()
     graph.pyplot(fig)
 
-    minicol1, minicol2 = graph.columns([1,1], gap="medium")
     last_tick = df_hist['Date_timestamp'].iloc[-1]
-    last_tick_text = "Last updated at " + "**" + str(last_tick) + "**." 
-    minicol1.write(last_tick_text)
-
     last_done_price = df_hist['Close'].iloc[-1]
-    last_done_text = "Previous minute's close rate is " + "**" + str(last_done_price) + "**." 
-    minicol2.write(last_done_text)
+    last_tick_text = "Last updated at " + "**" + str(last_tick) + "**, close rate is " + "**" + str(last_done_price) + "**." 
+    graph.write(last_tick_text)
+
+    # last_done_text = "Previous minute's close rate is " + "**" + str(last_done_price) + "**." 
+    # graph.write(last_done_text)
 
 
 # @st.cache_data
