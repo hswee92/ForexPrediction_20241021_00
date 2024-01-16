@@ -293,7 +293,7 @@ with GBPUSD:
 # container for information below
 container = col1.container(border=True)
 
-MT4_timezone = pytz.timezone('EET') 
+MT4_timezone = pytz.timezone('UTC') 
 MT4_now = datetime.now(MT4_timezone)
 str_MT4 = MT4_now.strftime("%d-%m-%Y %H:%M:%S")
 container.write("**Server time:** " + str_MT4)
