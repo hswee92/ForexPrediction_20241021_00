@@ -69,7 +69,7 @@ def plot_graph(df_hist,df_predict_ori=pd.DataFrame(),check=st.session_state["pre
         plt.fill(x_box, y_box,color=graph_color, alpha=0.15,edgecolor='none')
 
 
-    ax.set(xlabel='Eastern European Time')  
+    ax.set(xlabel='Coordinated Universal Time, UTC')  
     ax.set(ylabel='Exchange Rate') 
     plottitle = forex_pair[0:6] + ' Latest Exchange Rate'
     ax.set_title(plottitle)
