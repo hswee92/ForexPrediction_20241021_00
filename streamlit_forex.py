@@ -79,7 +79,7 @@ def plot_graph(df_hist,df_predict_ori=pd.DataFrame(),check=st.session_state["pre
     ax.legend()
     graph.pyplot(fig)
 
-    minicol1, minicol2 = graph.columns([2,4], gap="medium")
+    minicol1, minicol2 = graph.columns([1,1], gap="medium")
     last_tick = df_hist['Date_timestamp'].iloc[-1]
     last_tick_text = "Last updated at " + "**" + str(last_tick) + "**." 
     minicol1.write(last_tick_text)
