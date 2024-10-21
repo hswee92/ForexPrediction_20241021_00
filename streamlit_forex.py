@@ -14,11 +14,14 @@ import warnings
 
 # warnings.simplefilter('ignore')
 
-# define functions
 
+# set condition for state 
 if 'pred' not in st.session_state:
     st.session_state['pred'] = False
 
+
+## define functions
+# function to plot graphs on main page
 @st.cache_data
 def plot_graph(df_hist,df_predict_ori=pd.DataFrame(),check=st.session_state["pred"]):
     
@@ -88,52 +91,7 @@ def plot_graph(df_hist,df_predict_ori=pd.DataFrame(),check=st.session_state["pre
     # graph.write(last_done_text)
 
 
-# @st.cache_data
-def prediction_table(df_prediction, check=st.session_state["pred"]):
-    table = st.container(border=True)
-    table.title("Prediction")
-  
-    df2 = df_prediction
-    df2['Date'] = df2['Date'].str.slice(11,16)
-    df2['Close'] = df2['Close'].round(5)
-
-    if pred_toggle:
-        table.write("This is the trend prediction for the next 60 minutes.")
-        df2_set1 = df2[['Date','Close']][0:10]
-        df2_set2 = df2[['Date','Close']][10:20]
-        df2_set3 = df2[['Date','Close']][20:30]
-        df2_set4 = df2[['Date','Close']][30:40]
-        df2_set5 = df2[['Date','Close']][40:50]
-        df2_set6 = df2[['Date','Close']][50:60]
-        # table.write(st.session_state["pred"])
-        table.dataframe(df2_set1.T,width=660)
-        table.dataframe(df2_set2.T,width=660)
-        table.dataframe(df2_set3.T,width=660)
-        table.dataframe(df2_set4.T,width=660)
-        table.dataframe(df2_set5.T,width=660)
-        table.dataframe(df2_set6.T,width=660)
-    else:
-        table.write("Prediction function turned off")
-        df2['Close'] = '-'
-
-        df2_set1 = df2[['Date','Close']][0:10]
-        df2_set2 = df2[['Date','Close']][10:20]
-        df2_set3 = df2[['Date','Close']][20:30]
-        df2_set4 = df2[['Date','Close']][30:40]
-        df2_set5 = df2[['Date','Close']][40:50]
-        df2_set6 = df2[['Date','Close']][50:60]
-
-        # table.write(st.session_state["pred"])
-        table.dataframe(df2_set1.T,width=660)
-        table.dataframe(df2_set2.T,width=660)
-        table.dataframe(df2_set3.T,width=660)
-        table.dataframe(df2_set4.T,width=660)
-        table.dataframe(df2_set5.T,width=660)
-        table.dataframe(df2_set6.T,width=660)
-
-
-
-         
+# function to create list of time throughout the day based on period (1 min = 1440 data points)
 @st.cache_data
 def datetime_list(str_date):
     df_fulldate = pd.DataFrame()
@@ -147,7 +105,8 @@ def determine_state(col):
         return True
     else:
         return False
-    
+
+# function to determine the color of the graph
 def state_change(dataframe):
     change_index = []
     color = []
@@ -168,7 +127,7 @@ def state_change(dataframe):
     return change_index, color
 
 # --------------------------------------------------------------------------------------------------------------------
-
+# start defining the page here
 st.set_page_config(layout="wide")
 
 col1, col2 = st.columns([4,2], gap="medium")
@@ -217,7 +176,7 @@ st.sidebar.markdown(
 )
 
 
-
+## main program here!
 EURUSD, USDJPY, GBPUSD = col1.tabs(["EURUSD", "USDJPY**", "GBPUSD**"])
 with EURUSD:
     forex_pair = "EURUSD"    
