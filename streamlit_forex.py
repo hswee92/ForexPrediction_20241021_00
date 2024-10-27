@@ -38,38 +38,9 @@ def plot_graph(df_hist,df_predict_ori=pd.DataFrame(),check=st.session_state["pre
             [df_hist['Close'].iloc[0],df_hist['Close'].iloc[0]],color='black', linestyle='dotted',label='Day Open Rate')
 
     if forex_pair[0:6] == "EURUSD" and pred_toggle:
-        df_predict = pd.concat([df_hist.iloc[-2:], df_predict_ori]).reset_index(drop=True)
-        df_predict_plot = pd.concat([df_hist.iloc[-2:], df_predict_ori.iloc[-2:]]).reset_index(drop=True)
-        ax.plot(df_predict_plot['Date_timestamp'],df_predict_plot['Close'],label="Prediction",color='red',linewidth=2.5)
 
-        df_predict['daychange'] = df_predict['Close'] - df_hist['Close'].iloc[0]
-        df_predict['state'] = df_predict['daychange'].apply(determine_state)    
-        pred_change_index,pred_color = state_change(df_predict['state'])
-        del pred_change_index[0] # remove first index so that no overlap
-
-        pred_new_index = []
-        for r in pred_change_index:
-            date_index = df_datetime['Date'][df_datetime['Date'] == df_predict['Date_timestamp'].iloc[r]].index.values[0]
-            pred_new_index.append(int(date_index))
-        change_index_list = change_index_list + pred_new_index
-        color_list = color_list + pred_color
-        ymax_temp = max(df_predict['Close'])
-        ymin_temp = min(df_predict['Close'])
-        if ymax_temp > ymax: ymax = ymax_temp
-        if ymin_temp < ymin: ymin = ymin_temp
-
-    y_max = ymax + ymax*0.0005
-    y_min = ymin - ymin*0.0005
-
-    #draw box
-    for q in range(len(change_index_list)-1):
-        x_min = df_datetime['Date'].iloc[change_index_list[q]]
-        x_max = df_datetime['Date'].iloc[change_index_list[q+1]]
-        graph_color = color_list[q] 
-        x_box = [x_min, x_min, x_max, x_max] 
-        y_box = [y_min,y_max,y_max,y_min]
-
-        plt.fill(x_box, y_box,color=graph_color, alpha=0.15,edgecolor='none')
+        # "Date" "ChangePercent_1m" "Close"        
+        ax.scatter(df_predict_ori['Date'], df_predict_ori['Close'], color='red', marker='x')
 
 
     ax.set(xlabel='Coordinated Universal Time, UTC')  
