@@ -25,8 +25,8 @@ if 'pred' not in st.session_state:
 @st.cache_data
 def plot_graph(df_hist,df_predict_ori=pd.DataFrame(),check=st.session_state["pred"]):
     
-    df_hist['state'] = df_hist['daychange'].apply(determine_state)    
-    change_index_list,color_list = state_change(df_hist['state'])
+    # df_hist['state'] = df_hist['daychange'].apply(determine_state)    
+    # change_index_list,color_list = state_change(df_hist['state'])
     ymax = max(df_hist['Close'])
     ymin = min(df_hist['Close'])
         
@@ -101,24 +101,33 @@ def state_change(dataframe):
 # start defining the page here
 st.set_page_config(layout="wide")
 
-col1, col2 = st.columns([4,2], gap="medium")
-col2.title('Learning Materials')
-# forex market
-col2.video('https://www.youtube.com/watch?v=ig_EO805rpA') 
-# mitigate risk forex
-col2.video('https://www.youtube.com/watch?v=Bj7j3iD8bow') 
-# george soros and pound
-col2.video('https://www.youtube.com/watch?v=KVBuUYXsSRM') 
+st.title('Forex Rate Prediction')
+st.write("Hello! Welcome to Forex Rate Prediction page!")
 
-
-col1.title('Forex Rate Prediction')
-col1.write("Hello! Welcome to Forex Rate Prediction page!")
-
-col1.write("According to Triennial Central Bank Survey conducted by Bank for International Settlements (2022), "
+st.write("According to Triennial Central Bank Survey conducted by Bank for International Settlements (2022), "
          "US dollar is still the world's dominant currency. 88.5% of all trades in April 2022 involve **US dollar**, "
          "followed by **Euro** (30.5%), **Japanese Yen** (16.7%) and **Great Britain Pound** (12.9%).")
 
-col1.write("**Prediction not available.")
+st.write("**Prediction not available.")
+
+# col1, col2 = st.columns([4,2], gap="medium")
+# col2.title('Learning Materials')
+# # forex market
+# col2.video('https://www.youtube.com/watch?v=ig_EO805rpA') 
+# # mitigate risk forex
+# col2.video('https://www.youtube.com/watch?v=Bj7j3iD8bow') 
+# # george soros and pound
+# col2.video('https://www.youtube.com/watch?v=KVBuUYXsSRM') 
+
+
+# col1.title('Forex Rate Prediction')
+# col1.write("Hello! Welcome to Forex Rate Prediction page!")
+
+# col1.write("According to Triennial Central Bank Survey conducted by Bank for International Settlements (2022), "
+#          "US dollar is still the world's dominant currency. 88.5% of all trades in April 2022 involve **US dollar**, "
+#          "followed by **Euro** (30.5%), **Japanese Yen** (16.7%) and **Great Britain Pound** (12.9%).")
+
+# col1.write("**Prediction not available.")
 
 st.sidebar.title('Forex Rate Prediction')
 pred_toggle = st.sidebar.toggle("Enable Prediction",key='pred')
