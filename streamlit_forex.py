@@ -27,6 +27,7 @@ def plot_graph(df_hist,df_predict_ori=pd.DataFrame(),check=st.session_state["pre
     
     # df_hist['state'] = df_hist['daychange'].apply(determine_state)    
     # change_index_list,color_list = state_change(df_hist['state'])
+    st.write(df['Close'])
     ymax = max(df_hist['Close'])
     ymin = min(df_hist['Close'])
 
@@ -169,7 +170,6 @@ with EURUSD:
     df = pd.read_csv(hist_file, delimiter=',', index_col=False)
     df['Date_timestamp'] = pd.to_datetime(df['Date'])
     
-    st.write(df['Close'])
 
     # Prepare for plot
     str_datetime = df['Date'].iloc[0]
@@ -210,7 +210,7 @@ with USDJPY:
     st.write("USDJPY pair is the **SECOND** most traded currency pair. \n"
              "In April 2022, USDJPY makes up 13.2% of total trades.")
     st.write("This is the today's graph (" + str_date + ") for " + forex_pair[0:6] + ".")
-    plot_graph(df)   
+    # plot_graph(df)   
 
     
 with GBPUSD:
