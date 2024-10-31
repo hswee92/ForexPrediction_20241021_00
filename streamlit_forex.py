@@ -42,7 +42,7 @@ def plot_graph(df_hist,df_predict_ori=pd.DataFrame(),check=st.session_state["pre
 
         # "Date" "ChangePercent_1m" "Close"        
         ax.scatter(df_predict_ori['Date'], df_predict_ori['Close'], color='red', marker='x', s=5)
-        ax.plot(df_predict_ori['Date'], df_predict_ori['Close'], color='red', linewidth=0.8)
+        # ax.plot(df_predict_ori['Date'], df_predict_ori['Close'], color='red', linewidth=0.8)
 
 
     ax.set(xlabel='Coordinated Universal Time, UTC')  
