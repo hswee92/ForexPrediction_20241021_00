@@ -169,6 +169,7 @@ with EURUSD:
     df = pd.read_csv(hist_file, delimiter=',', index_col=False)
     df['Date_timestamp'] = pd.to_datetime(df['Date'])
     
+    st.write(df['Close'])
 
     # Prepare for plot
     str_datetime = df['Date'].iloc[0]
