@@ -29,6 +29,9 @@ def plot_graph(df_hist,df_predict_ori=pd.DataFrame(),check=st.session_state["pre
     # change_index_list,color_list = state_change(df_hist['state'])
     ymax = max(df_hist['Close'])
     ymin = min(df_hist['Close'])
+
+    st.write(y_min)
+    st.write(y_max)
         
     graph = st.container(border=True)
     plotcolor = 'dimgrey'
