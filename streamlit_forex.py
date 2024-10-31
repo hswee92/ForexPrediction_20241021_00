@@ -27,9 +27,9 @@ def plot_graph(df_hist,df_predict_ori=pd.DataFrame(),check=st.session_state["pre
     
     # df_hist['state'] = df_hist['daychange'].apply(determine_state)    
     # change_index_list,color_list = state_change(df_hist['state'])
-    st.write(df['Close'])
-    ymax = max(df_hist['Close'])
-    ymin = min(df_hist['Close'])
+ 
+    y_max = max(df_hist['Close'])
+    y_min = min(df_hist['Close'])
 
     st.write(y_min)
     st.write(y_max)
