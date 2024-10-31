@@ -41,7 +41,7 @@ def plot_graph(df_hist,df_predict_ori=pd.DataFrame(),check=st.session_state["pre
     if forex_pair[0:6] == "EURUSD" and pred_toggle:
 
         # "Date" "ChangePercent_1m" "Close"        
-        ax.scatter(df_predict_ori['Date'], df_predict_ori['Close'], color='red', marker='x', s=30)
+        ax.scatter(df_predict_ori['Date'], df_predict_ori['Close'], color='red', marker='x', s=5)
 
 
     ax.set(xlabel='Coordinated Universal Time, UTC')  
