@@ -157,7 +157,7 @@ st.sidebar.markdown(
 
 
 ## main program here!
-EURUSD, USDJPY, GBPUSD = col1.tabs(["EURUSD", "USDJPY**", "GBPUSD**"])
+EURUSD, USDJPY, GBPUSD = st.tabs(["EURUSD", "USDJPY**", "GBPUSD**"])
 with EURUSD:
     forex_pair = "EURUSD"    
     
@@ -230,7 +230,7 @@ with GBPUSD:
 
 
 # container for information below
-container = col1.container(border=True)
+container = st.container(border=True)
 
 MT4_timezone = pytz.timezone('UTC') 
 MT4_now = datetime.now(MT4_timezone)
