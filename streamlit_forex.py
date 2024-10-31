@@ -30,9 +30,6 @@ def plot_graph(df_hist,df_predict_ori=pd.DataFrame(),check=st.session_state["pre
  
     y_max = max(df_hist['Close'])
     y_min = min(df_hist['Close'])
-
-    st.write(y_min)
-    st.write(y_max)
         
     graph = st.container(border=True)
     plotcolor = 'dimgrey'
@@ -44,7 +41,7 @@ def plot_graph(df_hist,df_predict_ori=pd.DataFrame(),check=st.session_state["pre
     if forex_pair[0:6] == "EURUSD" and pred_toggle:
 
         # "Date" "ChangePercent_1m" "Close"        
-        ax.scatter(df_predict_ori['Date'], df_predict_ori['Close'], color='red', marker='x')
+        ax.scatter(df_predict_ori['Date'], df_predict_ori['Close'], color='red', marker='x', s=100)
 
 
     ax.set(xlabel='Coordinated Universal Time, UTC')  
